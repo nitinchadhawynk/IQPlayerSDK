@@ -1,0 +1,1069 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3689A0B727F905820099E9C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A0B627F905820099E9C8 /* AppDelegate.swift */; };
+		3689A0B927F905820099E9C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A0B827F905820099E9C8 /* SceneDelegate.swift */; };
+		3689A0BB27F905820099E9C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A0BA27F905820099E9C8 /* ContentView.swift */; };
+		3689A0BD27F905840099E9C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3689A0BC27F905840099E9C8 /* Assets.xcassets */; };
+		3689A0C027F905840099E9C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3689A0BF27F905840099E9C8 /* Preview Assets.xcassets */; };
+		3689A0C327F905840099E9C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3689A0C127F905840099E9C8 /* LaunchScreen.storyboard */; };
+		3689A0D927F905A10099E9C8 /* IQPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */; };
+		3689A0E027F905A10099E9C8 /* IQPlayerSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A0DF27F905A10099E9C8 /* IQPlayerSDKTests.swift */; };
+		3689A0E227F905A10099E9C8 /* IQPlayerSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 3689A0D227F905A10099E9C8 /* IQPlayerSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3689A0E527F905A10099E9C8 /* IQPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */; };
+		3689A0E627F905A10099E9C8 /* IQPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3689A0FE27F905AC0099E9C8 /* IQPlayerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0F527F905AB0099E9C8 /* IQPlayerClient.framework */; };
+		3689A10527F905AC0099E9C8 /* IQPlayerClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A10427F905AC0099E9C8 /* IQPlayerClientTests.swift */; };
+		3689A10727F905AC0099E9C8 /* IQPlayerClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 3689A0F727F905AB0099E9C8 /* IQPlayerClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3689A10A27F905AC0099E9C8 /* IQPlayerClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0F527F905AB0099E9C8 /* IQPlayerClient.framework */; };
+		3689A10B27F905AC0099E9C8 /* IQPlayerClient.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0F527F905AB0099E9C8 /* IQPlayerClient.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3689A11827F905C80099E9C8 /* IQPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A11727F905C80099E9C8 /* IQPlayerItem.swift */; };
+		3689A11F27F905EA0099E9C8 /* IQPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A11E27F905EA0099E9C8 /* IQPlayerView.swift */; };
+		3689A12A27F906240099E9C8 /* IQPlayableAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A12927F906240099E9C8 /* IQPlayableAction.swift */; };
+		3689A13527F9068C0099E9C8 /* IQPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A13427F9068C0099E9C8 /* IQPlayer.swift */; };
+		3689A15327F90B1A0099E9C8 /* IQPlayerViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A15227F90B1A0099E9C8 /* IQPlayerViewProtocol.swift */; };
+		3689A15927F90DB50099E9C8 /* SwiftUI_IQPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A15827F90DB50099E9C8 /* SwiftUI_IQPlayerView.swift */; };
+		3689A16F27F911BE0099E9C8 /* IQPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A16E27F911BE0099E9C8 /* IQPlayerViewController.swift */; };
+		3689A18927F917BA0099E9C8 /* IQPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */; };
+		3689A18A27F917BA0099E9C8 /* IQPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3689A19627F9189A0099E9C8 /* IQAssetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A19527F9189A0099E9C8 /* IQAssetLoader.swift */; };
+		36EE73BE27F99BF000401F1A /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE73BD27F99BF000401F1A /* Utility.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3689A0DA27F905A10099E9C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3689A0AB27F905820099E9C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3689A0CF27F905A10099E9C8;
+			remoteInfo = IQPlayerSDK;
+		};
+		3689A0DC27F905A10099E9C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3689A0AB27F905820099E9C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3689A0B227F905820099E9C8;
+			remoteInfo = IQPlayerSampleApp;
+		};
+		3689A0E327F905A10099E9C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3689A0AB27F905820099E9C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3689A0CF27F905A10099E9C8;
+			remoteInfo = IQPlayerSDK;
+		};
+		3689A0FF27F905AC0099E9C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3689A0AB27F905820099E9C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3689A0F427F905AB0099E9C8;
+			remoteInfo = IQPlayerClient;
+		};
+		3689A10127F905AC0099E9C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3689A0AB27F905820099E9C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3689A0B227F905820099E9C8;
+			remoteInfo = IQPlayerSampleApp;
+		};
+		3689A10827F905AC0099E9C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3689A0AB27F905820099E9C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3689A0F427F905AB0099E9C8;
+			remoteInfo = IQPlayerClient;
+		};
+		3689A18B27F917BA0099E9C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3689A0AB27F905820099E9C8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3689A0CF27F905A10099E9C8;
+			remoteInfo = IQPlayerSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3689A0EA27F905A10099E9C8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3689A10B27F905AC0099E9C8 /* IQPlayerClient.framework in Embed Frameworks */,
+				3689A0E627F905A10099E9C8 /* IQPlayerSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A18D27F917BA0099E9C8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3689A18A27F917BA0099E9C8 /* IQPlayerSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3689A0B327F905820099E9C8 /* IQPlayerSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IQPlayerSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3689A0B627F905820099E9C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3689A0B827F905820099E9C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		3689A0BA27F905820099E9C8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3689A0BC27F905840099E9C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3689A0BF27F905840099E9C8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3689A0C227F905840099E9C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3689A0C427F905840099E9C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IQPlayerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3689A0D227F905A10099E9C8 /* IQPlayerSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQPlayerSDK.h; sourceTree = "<group>"; };
+		3689A0D327F905A10099E9C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3689A0D827F905A10099E9C8 /* IQPlayerSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IQPlayerSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3689A0DF27F905A10099E9C8 /* IQPlayerSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerSDKTests.swift; sourceTree = "<group>"; };
+		3689A0E127F905A10099E9C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3689A0F527F905AB0099E9C8 /* IQPlayerClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IQPlayerClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3689A0F727F905AB0099E9C8 /* IQPlayerClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQPlayerClient.h; sourceTree = "<group>"; };
+		3689A0F827F905AB0099E9C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3689A0FD27F905AC0099E9C8 /* IQPlayerClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IQPlayerClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3689A10427F905AC0099E9C8 /* IQPlayerClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerClientTests.swift; sourceTree = "<group>"; };
+		3689A10627F905AC0099E9C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3689A11727F905C80099E9C8 /* IQPlayerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerItem.swift; sourceTree = "<group>"; };
+		3689A11E27F905EA0099E9C8 /* IQPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerView.swift; sourceTree = "<group>"; };
+		3689A12927F906240099E9C8 /* IQPlayableAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayableAction.swift; sourceTree = "<group>"; };
+		3689A13427F9068C0099E9C8 /* IQPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayer.swift; sourceTree = "<group>"; };
+		3689A15227F90B1A0099E9C8 /* IQPlayerViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerViewProtocol.swift; sourceTree = "<group>"; };
+		3689A15827F90DB50099E9C8 /* SwiftUI_IQPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_IQPlayerView.swift; sourceTree = "<group>"; };
+		3689A16E27F911BE0099E9C8 /* IQPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerViewController.swift; sourceTree = "<group>"; };
+		3689A19527F9189A0099E9C8 /* IQAssetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQAssetLoader.swift; sourceTree = "<group>"; };
+		36EE73BD27F99BF000401F1A /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3689A0B027F905820099E9C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A10A27F905AC0099E9C8 /* IQPlayerClient.framework in Frameworks */,
+				3689A0E527F905A10099E9C8 /* IQPlayerSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0CD27F905A10099E9C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0D527F905A10099E9C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A0D927F905A10099E9C8 /* IQPlayerSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0F227F905AB0099E9C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A18927F917BA0099E9C8 /* IQPlayerSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0FA27F905AC0099E9C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A0FE27F905AC0099E9C8 /* IQPlayerClient.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3689A0AA27F905820099E9C8 = {
+			isa = PBXGroup;
+			children = (
+				3689A0B527F905820099E9C8 /* IQPlayerSampleApp */,
+				3689A0D127F905A10099E9C8 /* IQPlayerSDK */,
+				3689A0DE27F905A10099E9C8 /* IQPlayerSDKTests */,
+				3689A0F627F905AB0099E9C8 /* IQPlayerClient */,
+				3689A10327F905AC0099E9C8 /* IQPlayerClientTests */,
+				3689A0B427F905820099E9C8 /* Products */,
+				3689A18827F917BA0099E9C8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3689A0B427F905820099E9C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3689A0B327F905820099E9C8 /* IQPlayerSampleApp.app */,
+				3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */,
+				3689A0D827F905A10099E9C8 /* IQPlayerSDKTests.xctest */,
+				3689A0F527F905AB0099E9C8 /* IQPlayerClient.framework */,
+				3689A0FD27F905AC0099E9C8 /* IQPlayerClientTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3689A0B527F905820099E9C8 /* IQPlayerSampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				3689A0B627F905820099E9C8 /* AppDelegate.swift */,
+				3689A0B827F905820099E9C8 /* SceneDelegate.swift */,
+				3689A0BA27F905820099E9C8 /* ContentView.swift */,
+				3689A0BC27F905840099E9C8 /* Assets.xcassets */,
+				3689A0C127F905840099E9C8 /* LaunchScreen.storyboard */,
+				3689A0C427F905840099E9C8 /* Info.plist */,
+				3689A0BE27F905840099E9C8 /* Preview Content */,
+				3689A15827F90DB50099E9C8 /* SwiftUI_IQPlayerView.swift */,
+			);
+			path = IQPlayerSampleApp;
+			sourceTree = "<group>";
+		};
+		3689A0BE27F905840099E9C8 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3689A0BF27F905840099E9C8 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3689A0D127F905A10099E9C8 /* IQPlayerSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3689A13327F906820099E9C8 /* IQPlayer */,
+				3689A12827F906180099E9C8 /* IQPlayableAction */,
+				3689A11D27F905DE0099E9C8 /* IQPlayerView */,
+				3689A11627F905BA0099E9C8 /* IQPlayerItem */,
+				3689A0D227F905A10099E9C8 /* IQPlayerSDK.h */,
+				3689A0D327F905A10099E9C8 /* Info.plist */,
+				36EE73BD27F99BF000401F1A /* Utility.swift */,
+			);
+			path = IQPlayerSDK;
+			sourceTree = "<group>";
+		};
+		3689A0DE27F905A10099E9C8 /* IQPlayerSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				3689A0DF27F905A10099E9C8 /* IQPlayerSDKTests.swift */,
+				3689A0E127F905A10099E9C8 /* Info.plist */,
+			);
+			path = IQPlayerSDKTests;
+			sourceTree = "<group>";
+		};
+		3689A0F627F905AB0099E9C8 /* IQPlayerClient */ = {
+			isa = PBXGroup;
+			children = (
+				3689A0F727F905AB0099E9C8 /* IQPlayerClient.h */,
+				3689A0F827F905AB0099E9C8 /* Info.plist */,
+				3689A16E27F911BE0099E9C8 /* IQPlayerViewController.swift */,
+			);
+			path = IQPlayerClient;
+			sourceTree = "<group>";
+		};
+		3689A10327F905AC0099E9C8 /* IQPlayerClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				3689A10427F905AC0099E9C8 /* IQPlayerClientTests.swift */,
+				3689A10627F905AC0099E9C8 /* Info.plist */,
+			);
+			path = IQPlayerClientTests;
+			sourceTree = "<group>";
+		};
+		3689A11627F905BA0099E9C8 /* IQPlayerItem */ = {
+			isa = PBXGroup;
+			children = (
+				3689A19427F9188B0099E9C8 /* IQAssetLoader */,
+				3689A11727F905C80099E9C8 /* IQPlayerItem.swift */,
+			);
+			path = IQPlayerItem;
+			sourceTree = "<group>";
+		};
+		3689A11D27F905DE0099E9C8 /* IQPlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				3689A11E27F905EA0099E9C8 /* IQPlayerView.swift */,
+			);
+			path = IQPlayerView;
+			sourceTree = "<group>";
+		};
+		3689A12827F906180099E9C8 /* IQPlayableAction */ = {
+			isa = PBXGroup;
+			children = (
+				3689A12927F906240099E9C8 /* IQPlayableAction.swift */,
+				3689A15227F90B1A0099E9C8 /* IQPlayerViewProtocol.swift */,
+			);
+			path = IQPlayableAction;
+			sourceTree = "<group>";
+		};
+		3689A13327F906820099E9C8 /* IQPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				3689A13427F9068C0099E9C8 /* IQPlayer.swift */,
+			);
+			path = IQPlayer;
+			sourceTree = "<group>";
+		};
+		3689A18827F917BA0099E9C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3689A19427F9188B0099E9C8 /* IQAssetLoader */ = {
+			isa = PBXGroup;
+			children = (
+				3689A19527F9189A0099E9C8 /* IQAssetLoader.swift */,
+			);
+			path = IQAssetLoader;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3689A0CB27F905A10099E9C8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A0E227F905A10099E9C8 /* IQPlayerSDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0F027F905AB0099E9C8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A10727F905AC0099E9C8 /* IQPlayerClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3689A0B227F905820099E9C8 /* IQPlayerSampleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3689A0C727F905840099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerSampleApp" */;
+			buildPhases = (
+				3689A0AF27F905820099E9C8 /* Sources */,
+				3689A0B027F905820099E9C8 /* Frameworks */,
+				3689A0B127F905820099E9C8 /* Resources */,
+				3689A0EA27F905A10099E9C8 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3689A0E427F905A10099E9C8 /* PBXTargetDependency */,
+				3689A10927F905AC0099E9C8 /* PBXTargetDependency */,
+			);
+			name = IQPlayerSampleApp;
+			productName = IQPlayerSampleApp;
+			productReference = 3689A0B327F905820099E9C8 /* IQPlayerSampleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3689A0CF27F905A10099E9C8 /* IQPlayerSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3689A0E727F905A10099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerSDK" */;
+			buildPhases = (
+				3689A0CB27F905A10099E9C8 /* Headers */,
+				3689A0CC27F905A10099E9C8 /* Sources */,
+				3689A0CD27F905A10099E9C8 /* Frameworks */,
+				3689A0CE27F905A10099E9C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IQPlayerSDK;
+			productName = IQPlayerSDK;
+			productReference = 3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3689A0D727F905A10099E9C8 /* IQPlayerSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3689A0EB27F905A10099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerSDKTests" */;
+			buildPhases = (
+				3689A0D427F905A10099E9C8 /* Sources */,
+				3689A0D527F905A10099E9C8 /* Frameworks */,
+				3689A0D627F905A10099E9C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3689A0DB27F905A10099E9C8 /* PBXTargetDependency */,
+				3689A0DD27F905A10099E9C8 /* PBXTargetDependency */,
+			);
+			name = IQPlayerSDKTests;
+			productName = IQPlayerSDKTests;
+			productReference = 3689A0D827F905A10099E9C8 /* IQPlayerSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3689A0F427F905AB0099E9C8 /* IQPlayerClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3689A10C27F905AC0099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerClient" */;
+			buildPhases = (
+				3689A0F027F905AB0099E9C8 /* Headers */,
+				3689A0F127F905AB0099E9C8 /* Sources */,
+				3689A0F227F905AB0099E9C8 /* Frameworks */,
+				3689A0F327F905AB0099E9C8 /* Resources */,
+				3689A18D27F917BA0099E9C8 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3689A18C27F917BA0099E9C8 /* PBXTargetDependency */,
+			);
+			name = IQPlayerClient;
+			productName = IQPlayerClient;
+			productReference = 3689A0F527F905AB0099E9C8 /* IQPlayerClient.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3689A0FC27F905AC0099E9C8 /* IQPlayerClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3689A10F27F905AC0099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerClientTests" */;
+			buildPhases = (
+				3689A0F927F905AC0099E9C8 /* Sources */,
+				3689A0FA27F905AC0099E9C8 /* Frameworks */,
+				3689A0FB27F905AC0099E9C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3689A10027F905AC0099E9C8 /* PBXTargetDependency */,
+				3689A10227F905AC0099E9C8 /* PBXTargetDependency */,
+			);
+			name = IQPlayerClientTests;
+			productName = IQPlayerClientTests;
+			productReference = 3689A0FD27F905AC0099E9C8 /* IQPlayerClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3689A0AB27F905820099E9C8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					3689A0B227F905820099E9C8 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					3689A0CF27F905A10099E9C8 = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
+					};
+					3689A0D727F905A10099E9C8 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 3689A0B227F905820099E9C8;
+					};
+					3689A0F427F905AB0099E9C8 = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
+					};
+					3689A0FC27F905AC0099E9C8 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 3689A0B227F905820099E9C8;
+					};
+				};
+			};
+			buildConfigurationList = 3689A0AE27F905820099E9C8 /* Build configuration list for PBXProject "IQPlayerSampleApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3689A0AA27F905820099E9C8;
+			productRefGroup = 3689A0B427F905820099E9C8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3689A0B227F905820099E9C8 /* IQPlayerSampleApp */,
+				3689A0CF27F905A10099E9C8 /* IQPlayerSDK */,
+				3689A0D727F905A10099E9C8 /* IQPlayerSDKTests */,
+				3689A0F427F905AB0099E9C8 /* IQPlayerClient */,
+				3689A0FC27F905AC0099E9C8 /* IQPlayerClientTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3689A0B127F905820099E9C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A0C327F905840099E9C8 /* LaunchScreen.storyboard in Resources */,
+				3689A0C027F905840099E9C8 /* Preview Assets.xcassets in Resources */,
+				3689A0BD27F905840099E9C8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0CE27F905A10099E9C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0D627F905A10099E9C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0F327F905AB0099E9C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0FB27F905AC0099E9C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3689A0AF27F905820099E9C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A0B727F905820099E9C8 /* AppDelegate.swift in Sources */,
+				3689A15927F90DB50099E9C8 /* SwiftUI_IQPlayerView.swift in Sources */,
+				3689A0B927F905820099E9C8 /* SceneDelegate.swift in Sources */,
+				3689A0BB27F905820099E9C8 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0CC27F905A10099E9C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36EE73BE27F99BF000401F1A /* Utility.swift in Sources */,
+				3689A13527F9068C0099E9C8 /* IQPlayer.swift in Sources */,
+				3689A12A27F906240099E9C8 /* IQPlayableAction.swift in Sources */,
+				3689A15327F90B1A0099E9C8 /* IQPlayerViewProtocol.swift in Sources */,
+				3689A11827F905C80099E9C8 /* IQPlayerItem.swift in Sources */,
+				3689A11F27F905EA0099E9C8 /* IQPlayerView.swift in Sources */,
+				3689A19627F9189A0099E9C8 /* IQAssetLoader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0D427F905A10099E9C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A0E027F905A10099E9C8 /* IQPlayerSDKTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0F127F905AB0099E9C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A16F27F911BE0099E9C8 /* IQPlayerViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3689A0F927F905AC0099E9C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3689A10527F905AC0099E9C8 /* IQPlayerClientTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3689A0DB27F905A10099E9C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3689A0CF27F905A10099E9C8 /* IQPlayerSDK */;
+			targetProxy = 3689A0DA27F905A10099E9C8 /* PBXContainerItemProxy */;
+		};
+		3689A0DD27F905A10099E9C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3689A0B227F905820099E9C8 /* IQPlayerSampleApp */;
+			targetProxy = 3689A0DC27F905A10099E9C8 /* PBXContainerItemProxy */;
+		};
+		3689A0E427F905A10099E9C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3689A0CF27F905A10099E9C8 /* IQPlayerSDK */;
+			targetProxy = 3689A0E327F905A10099E9C8 /* PBXContainerItemProxy */;
+		};
+		3689A10027F905AC0099E9C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3689A0F427F905AB0099E9C8 /* IQPlayerClient */;
+			targetProxy = 3689A0FF27F905AC0099E9C8 /* PBXContainerItemProxy */;
+		};
+		3689A10227F905AC0099E9C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3689A0B227F905820099E9C8 /* IQPlayerSampleApp */;
+			targetProxy = 3689A10127F905AC0099E9C8 /* PBXContainerItemProxy */;
+		};
+		3689A10927F905AC0099E9C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3689A0F427F905AB0099E9C8 /* IQPlayerClient */;
+			targetProxy = 3689A10827F905AC0099E9C8 /* PBXContainerItemProxy */;
+		};
+		3689A18C27F917BA0099E9C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3689A0CF27F905A10099E9C8 /* IQPlayerSDK */;
+			targetProxy = 3689A18B27F917BA0099E9C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3689A0C127F905840099E9C8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3689A0C227F905840099E9C8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3689A0C527F905840099E9C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3689A0C627F905840099E9C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3689A0C827F905840099E9C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"IQPlayerSampleApp/Preview Content\"";
+				DEVELOPMENT_TEAM = B5BFPPV872;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = IQPlayerSampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.wynkpremiere.IQPlayerSampleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3689A0C927F905840099E9C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"IQPlayerSampleApp/Preview Content\"";
+				DEVELOPMENT_TEAM = B5BFPPV872;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = IQPlayerSampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.wynkpremiere.IQPlayerSampleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3689A0E827F905A10099E9C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = B5BFPPV872;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = IQPlayerSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.wynkpremiere.IQPlayerSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3689A0E927F905A10099E9C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = B5BFPPV872;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = IQPlayerSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.wynkpremiere.IQPlayerSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3689A0EC27F905A10099E9C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B5BFPPV872;
+				INFOPLIST_FILE = IQPlayerSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.wynkpremiere.IQPlayerSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IQPlayerSampleApp.app/IQPlayerSampleApp";
+			};
+			name = Debug;
+		};
+		3689A0ED27F905A10099E9C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B5BFPPV872;
+				INFOPLIST_FILE = IQPlayerSDKTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.wynkpremiere.IQPlayerSDKTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IQPlayerSampleApp.app/IQPlayerSampleApp";
+			};
+			name = Release;
+		};
+		3689A10D27F905AC0099E9C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = B5BFPPV872;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = IQPlayerClient/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.wynkpremiere.IQPlayerClient;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3689A10E27F905AC0099E9C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = B5BFPPV872;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = IQPlayerClient/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.wynkpremiere.IQPlayerClient;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3689A11027F905AC0099E9C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B5BFPPV872;
+				INFOPLIST_FILE = IQPlayerClientTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.wynkpremiere.IQPlayerClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IQPlayerSampleApp.app/IQPlayerSampleApp";
+			};
+			name = Debug;
+		};
+		3689A11127F905AC0099E9C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B5BFPPV872;
+				INFOPLIST_FILE = IQPlayerClientTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.wynkpremiere.IQPlayerClientTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IQPlayerSampleApp.app/IQPlayerSampleApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3689A0AE27F905820099E9C8 /* Build configuration list for PBXProject "IQPlayerSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3689A0C527F905840099E9C8 /* Debug */,
+				3689A0C627F905840099E9C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3689A0C727F905840099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3689A0C827F905840099E9C8 /* Debug */,
+				3689A0C927F905840099E9C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3689A0E727F905A10099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3689A0E827F905A10099E9C8 /* Debug */,
+				3689A0E927F905A10099E9C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3689A0EB27F905A10099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3689A0EC27F905A10099E9C8 /* Debug */,
+				3689A0ED27F905A10099E9C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3689A10C27F905AC0099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3689A10D27F905AC0099E9C8 /* Debug */,
+				3689A10E27F905AC0099E9C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3689A10F27F905AC0099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3689A11027F905AC0099E9C8 /* Debug */,
+				3689A11127F905AC0099E9C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3689A0AB27F905820099E9C8 /* Project object */;
+}
