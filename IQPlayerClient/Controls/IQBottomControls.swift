@@ -62,7 +62,7 @@ class IQBottomControls: UIView {
     func addButtons() {
         var subViews = [UIView]()
         for control in controls {
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 250, height: 40))
+            let button = UIButton(frame: .zero)
             button.setTitle(control.title, for: .normal)
             button.sizeToFit()
             button.tag = control.tag

@@ -28,6 +28,15 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
         return av_playerLayer
     }
     
+    var isMuted: Bool {
+        get {
+            return av_player.isMuted
+        }
+        set {
+            av_player.isMuted = newValue
+        }
+    }
+    
     init(playerItem: IQPlayerItem) {
         av_player = AVPlayer(playerItem: playerItem.av_playerItem)
         av_playerLayer = AVPlayerLayer()
@@ -38,10 +47,13 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
     }
     
     //MARK: IQPlayerControlActionDelegate
+    
+    //Signals the desire to begin playback at the current item's natural rate.
     func play() {
         av_player.play()
     }
     
+    //Pauses playback
     func pause() {
         av_player.pause()
     }

@@ -10,10 +10,10 @@ import AVKit
 
 public protocol IQPlayerControlActionDelegate {
     
+    var isMuted: Bool { get set }
     
     func play()
     func pause()
-    func setMuted(enabled: Bool)
     func startPip()
 }
 

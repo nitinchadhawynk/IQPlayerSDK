@@ -67,10 +67,10 @@ extension IQPlayerView: IQVideoPlayerInterface {
         
     public var isMuted: Bool {
         get {
-            return _isMuted
+            return player.isMuted
         }
         set {
-            _isMuted = newValue
+            player.isMuted = newValue
         }
     }
     

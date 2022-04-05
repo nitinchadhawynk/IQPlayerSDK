@@ -44,10 +44,10 @@ public class IQPlayerViewController: UIViewController {
         bottomControls?.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bottomControls!)
         NSLayoutConstraint.activate([
-            bottomControls!.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomControls!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             bottomControls!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60),
             bottomControls!.heightAnchor.constraint(equalToConstant: 50),
-            bottomControls!.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            bottomControls!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
         view.bringSubviewToFront(bottomControls!)
         

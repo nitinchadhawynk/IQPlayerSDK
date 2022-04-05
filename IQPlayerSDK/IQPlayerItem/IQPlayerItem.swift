@@ -8,6 +8,44 @@
 import Foundation
 import AVFoundation
 
+public protocol IQVideoOutputProtocol {
+    func rateChanged(rate: Double)
+    func playbackDidEnded()
+}
+
+public struct IQPlayerPerformanceMetrics: IQVideoOutputProtocol {
+    
+    var playerItem: IQPlayerItem
+    
+    init(playerItem: IQPlayerItem) {
+        self.playerItem = playerItem
+        self.playerItem.output.append(client: self)
+    }
+    
+    public func rateChanged(rate: Double) {
+        
+    }
+    
+    public func playbackDidEnded() {
+        
+    }
+}
+
+public class IQPlayerOutput {
+    
+    var clients = [IQVideoOutputProtocol]()
+    
+    public func append(client: IQVideoOutputProtocol) {
+        clients.append(client)
+    }
+    
+    func playbackDidEnded() {
+        clients.forEach {
+            $0.playbackDidEnded()
+        }
+    }
+}
+
 public struct IQPlayerItem {
     
     public var playbackURL: URL
@@ -15,6 +53,7 @@ public struct IQPlayerItem {
     public var headers: [String: Any]?
     public var isAutoPlayEnabled = true
     
+    public private(set) var output = IQPlayerOutput()
     var av_playerItem: AVPlayerItem
     var av_asset: AVURLAsset
     
