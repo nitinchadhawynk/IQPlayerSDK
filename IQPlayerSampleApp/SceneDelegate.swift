@@ -8,6 +8,27 @@
 import UIKit
 import SwiftUI
 import IQPlayerClient
+import IQPlayerSDK
+
+struct OutputManager: IQPlayerPlaybackConsumer {
+    func playback(view: IQPlayerView, didProgressChangedTo progress: TimeInterval, withDuration duration: TimeInterval) {
+        print("\(progress) \(duration)")
+    }
+    
+    func playback(view: IQPlayerView, didProgressChangedTo interval: TimeInterval) {
+        
+    }
+    
+    func playbackDidEnded(view: IQPlayerView) {
+        
+    }
+    
+    func rateChanged(rate: TimeInterval) { }
+    func playbackProgressChanged(progress: TimeInterval, duration: TimeInterval) {
+        
+    }
+    func playbackDidEnded() { }
+}
 
 class SampleViewController: UIViewController, PictureInPictureDelegate {
     func presentViewController(vc: UIViewController, completion: @escaping (Bool) -> Void) {
@@ -45,6 +66,7 @@ class SampleViewController: UIViewController, PictureInPictureDelegate {
         let item = SampleApplicationPlayerViewModel()
         let controller = IQPlayerViewController(playerItem: item.playerItem)
         controller.pipDelegate = self
+        controller.outputDelegate = OutputManager()
         present(controller, animated: true)
     }
     

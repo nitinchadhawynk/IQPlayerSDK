@@ -17,11 +17,17 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
     private let av_playerLayer: AVPlayerLayer
     @objc private let av_player: AVPlayer
     
+    var output: IQPlaybackOutputManager?
+    
     // Used to caclulate stall duration
     fileprivate var stallBeginTime:Int64 = 0
     
     // Last observed bitrate
     fileprivate var lastBitrate:Double = 0
+    
+    var currentTime: Double {
+        return CMTimeGetSeconds(av_player.currentTime())
+    }
     
     //MARK: IQPlayerViewDelegate
     var layer: CALayer {
@@ -65,11 +71,33 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
     func startPip() {
         
     }
+    
+    func seek(to time: TimeInterval) {
+        let myTime = CMTime(seconds: time, preferredTimescale: 60000)
+        av_player.seek(to: myTime, toleranceBefore: .zero, toleranceAfter: .zero)
+    }
+    
+    func reset() {
+        av_player.seek(to: CMTime.zero)
+    }
+    
+    deinit {
+        print("IQPlayer DEINIT")
+    }
 }
 
 extension IQPlayer {
     
     func addObservers() {
+        
+        av_player.addPeriodicTimeObserver(forInterval:
+                                            CMTime(seconds: playerItem.options.playbackProgressInterval, preferredTimescale: 1000),
+                                          queue: DispatchQueue.main) { [weak self] time in
+            guard let self = self else { return }
+            let duration = self.av_player.currentItem?.asset.duration ?? CMTime(seconds: 0, preferredTimescale: 1000)
+            self.output?.playbackProgressChanged(progress: CMTimeGetSeconds(time),
+                                                           duration: CMTimeGetSeconds(duration))
+        }
         
         // [LOGGING] Add observer for player status
         addObserver(self, forKeyPath: #keyPath(av_player.status), options: [.new, .initial], context: nil)
@@ -135,8 +163,10 @@ extension IQPlayer {
             // Switch over the status
             switch status {
             case .readyToPlay:
+                output?.playerItemIsReadyToPlay()
                 writeToConsole("Player item is ready to play", "Playback")
             case .failed:
+                output?.playerItemFailed(error: av_player.currentItem?.error)
                 writeToConsole("Player item failed error: \(String(describing: av_player.currentItem?.error?.localizedDescription))\n Debug info: \(String(describing: av_player.currentItem?.error.debugDescription))","Playback")
             case .unknown:
                 writeToConsole("Player item is not yet ready","Playback")
@@ -159,8 +189,10 @@ extension IQPlayer {
             // Switch over the status
             switch status {
             case .readyToPlay:
+                output?.playerReadyToPlay()
                 writeToConsole("Player is ready to play AVPlayerItem instances","Playback")
             case .failed:
+                output?.playerFailed(error: av_player.error)
                 writeToConsole("Player can no longer play AVPlayerItem instances because of an error: \(String(describing: av_player.error?.localizedDescription))\n Debug info: \(String(describing: av_player.error.debugDescription))","Playback")
             case .unknown:
                 writeToConsole("Player is not yet ready","Playback")

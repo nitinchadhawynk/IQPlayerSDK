@@ -8,52 +8,19 @@
 import Foundation
 import AVFoundation
 
-public protocol IQVideoOutputProtocol {
-    func rateChanged(rate: Double)
-    func playbackDidEnded()
-}
-
-public struct IQPlayerPerformanceMetrics: IQVideoOutputProtocol {
-    
-    var playerItem: IQPlayerItem
-    
-    init(playerItem: IQPlayerItem) {
-        self.playerItem = playerItem
-        self.playerItem.output.append(client: self)
-    }
-    
-    public func rateChanged(rate: Double) {
-        
-    }
-    
-    public func playbackDidEnded() {
-        
-    }
-}
-
-public class IQPlayerOutput {
-    
-    var clients = [IQVideoOutputProtocol]()
-    
-    public func append(client: IQVideoOutputProtocol) {
-        clients.append(client)
-    }
-    
-    func playbackDidEnded() {
-        clients.forEach {
-            $0.playbackDidEnded()
-        }
-    }
-}
-
 public struct IQPlayerItem {
     
     public var playbackURL: URL
-    public var contentID: String
-    public var headers: [String: Any]?
-    public var isAutoPlayEnabled = true
     
-    public private(set) var output = IQPlayerOutput()
+    private  var headers: [String: Any]?
+    
+    ////autoPlay used to start the video playback instantly after loading the asset
+    public var autoPlay = true
+    
+    internal var output: IQPlaybackOutputManager?
+    
+    public var options: IQPlayerItemOptionsProtocol = IQPlayerItemOptions()
+    
     var av_playerItem: AVPlayerItem
     var av_asset: AVURLAsset
     
@@ -62,7 +29,6 @@ public struct IQPlayerItem {
     public init(playbackURL: URL, headers: [String: Any]? = nil) {
         self.playbackURL = playbackURL
         self.headers = headers
-        self.contentID = "123"
         var playerHeaders: [String: Any]?
         if let headers = headers {
             playerHeaders = ["AVURLAssetHTTPHeaderFieldsKey": headers]
@@ -76,4 +42,21 @@ public struct IQPlayerItem {
     public func setAssetLoaderDelegate(delegate: IQAssetLoaderDelegate) {
         self.assetLoader.delegate = delegate
     }
+    
+    public func qualitySelected(at bitrate: Double) {
+        av_playerItem.preferredPeakBitRate = bitrate * 1000
+    }
+    
+    public func duration() -> TimeInterval {
+        return CMTimeGetSeconds(av_playerItem.asset.duration)
+    }
+}
+
+//MARK: Observers functions on IQPlayerItem
+extension IQPlayerItem {
+    
+    func addObservers() {
+        
+    }
+    
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36656C9D27FCEA1A006715CF /* IQVideoPlayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656C9C27FCEA1A006715CF /* IQVideoPlayerOptions.swift */; };
+		36656C9F27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656C9E27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift */; };
+		36656CA127FCF346006715CF /* IQPlayerLifeCycleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CA027FCF346006715CF /* IQPlayerLifeCycleEvent.swift */; };
 		3689A0B727F905820099E9C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A0B627F905820099E9C8 /* AppDelegate.swift */; };
 		3689A0B927F905820099E9C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A0B827F905820099E9C8 /* SceneDelegate.swift */; };
 		3689A0BB27F905820099E9C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A0BA27F905820099E9C8 /* ContentView.swift */; };
@@ -34,6 +37,8 @@
 		3689A18A27F917BA0099E9C8 /* IQPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3689A19627F9189A0099E9C8 /* IQAssetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A19527F9189A0099E9C8 /* IQAssetLoader.swift */; };
 		36CB155427FBAD8900A888BC /* IQBottomControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CB155327FBAD8900A888BC /* IQBottomControls.swift */; };
+		36CB155727FCBBC700A888BC /* IQPlaybackOutputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CB155627FCBBC700A888BC /* IQPlaybackOutputManager.swift */; };
+		36CB155927FCBBF900A888BC /* IQPlayerPerformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CB155827FCBBF900A888BC /* IQPlayerPerformance.swift */; };
 		36EE73BE27F99BF000401F1A /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE73BD27F99BF000401F1A /* Utility.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +121,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		36656C9C27FCEA1A006715CF /* IQVideoPlayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQVideoPlayerOptions.swift; sourceTree = "<group>"; };
+		36656C9E27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerPlaybackConsumer.swift; sourceTree = "<group>"; };
+		36656CA027FCF346006715CF /* IQPlayerLifeCycleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerLifeCycleEvent.swift; sourceTree = "<group>"; };
 		3689A0B327F905820099E9C8 /* IQPlayerSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IQPlayerSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3689A0B627F905820099E9C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3689A0B827F905820099E9C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +153,8 @@
 		3689A16E27F911BE0099E9C8 /* IQPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerViewController.swift; sourceTree = "<group>"; };
 		3689A19527F9189A0099E9C8 /* IQAssetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQAssetLoader.swift; sourceTree = "<group>"; };
 		36CB155327FBAD8900A888BC /* IQBottomControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQBottomControls.swift; sourceTree = "<group>"; };
+		36CB155627FCBBC700A888BC /* IQPlaybackOutputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlaybackOutputManager.swift; sourceTree = "<group>"; };
+		36CB155827FCBBF900A888BC /* IQPlayerPerformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerPerformance.swift; sourceTree = "<group>"; };
 		36EE73BD27F99BF000401F1A /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -243,6 +253,7 @@
 		3689A0D127F905A10099E9C8 /* IQPlayerSDK */ = {
 			isa = PBXGroup;
 			children = (
+				36CB155527FCBBAC00A888BC /* IQPlayerOutput */,
 				3689A13327F906820099E9C8 /* IQPlayer */,
 				3689A12827F906180099E9C8 /* IQPlayableAction */,
 				3689A11D27F905DE0099E9C8 /* IQPlayerView */,
@@ -288,6 +299,7 @@
 			children = (
 				3689A19427F9188B0099E9C8 /* IQAssetLoader */,
 				3689A11727F905C80099E9C8 /* IQPlayerItem.swift */,
+				36656C9C27FCEA1A006715CF /* IQVideoPlayerOptions.swift */,
 			);
 			path = IQPlayerItem;
 			sourceTree = "<group>";
@@ -338,6 +350,17 @@
 				36CB155327FBAD8900A888BC /* IQBottomControls.swift */,
 			);
 			path = Controls;
+			sourceTree = "<group>";
+		};
+		36CB155527FCBBAC00A888BC /* IQPlayerOutput */ = {
+			isa = PBXGroup;
+			children = (
+				36656C9E27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift */,
+				36656CA027FCF346006715CF /* IQPlayerLifeCycleEvent.swift */,
+				36CB155627FCBBC700A888BC /* IQPlaybackOutputManager.swift */,
+				36CB155827FCBBF900A888BC /* IQPlayerPerformance.swift */,
+			);
+			path = IQPlayerOutput;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -571,9 +594,14 @@
 				3689A13527F9068C0099E9C8 /* IQPlayer.swift in Sources */,
 				3689A12A27F906240099E9C8 /* IQPlayableAction.swift in Sources */,
 				3689A15327F90B1A0099E9C8 /* IQPlayerViewProtocol.swift in Sources */,
+				36656CA127FCF346006715CF /* IQPlayerLifeCycleEvent.swift in Sources */,
+				36656C9F27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift in Sources */,
 				3689A11827F905C80099E9C8 /* IQPlayerItem.swift in Sources */,
+				36CB155927FCBBF900A888BC /* IQPlayerPerformance.swift in Sources */,
 				3689A11F27F905EA0099E9C8 /* IQPlayerView.swift in Sources */,
 				3689A19627F9189A0099E9C8 /* IQAssetLoader.swift in Sources */,
+				36CB155727FCBBC700A888BC /* IQPlaybackOutputManager.swift in Sources */,
+				36656C9D27FCEA1A006715CF /* IQVideoPlayerOptions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

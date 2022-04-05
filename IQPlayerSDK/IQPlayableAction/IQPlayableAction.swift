@@ -20,7 +20,7 @@ public protocol IQPlayerControlActionDelegate {
 public protocol IQVideoPlayerInterface {
     func play()
     func pause()
-    func seek()
+    func seek(to time: TimeInterval)
     
     var isMuted: Bool { get set }
     var isPaused: Bool { get set }

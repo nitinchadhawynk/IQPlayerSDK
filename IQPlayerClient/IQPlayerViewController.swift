@@ -19,6 +19,7 @@ public class IQPlayerViewController: UIViewController {
     private var playerView: IQPlayerView?
     private var button: UIButton?
     public var pipDelegate: PictureInPictureDelegate?
+    public var outputDelegate: IQPlayerPlaybackConsumer?
     var bottomControls: IQBottomControls?
     
     private var pictureInPictureController: AVPictureInPictureController?
@@ -32,6 +33,9 @@ public class IQPlayerViewController: UIViewController {
     private func addPlayerView() {
         self.playerView = IQPlayerView(frame: .zero, playerItem: item)
         guard let playerView = playerView else { return }
+        if let consumerDelegate = outputDelegate {
+            playerView.setDelegate(client: consumerDelegate)
+        }
         playerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(playerView)
         playerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -90,8 +94,8 @@ extension IQPlayerViewController: IQBottomControlDelegate {
             break
         case .mute(let bool):
             playerView?.isMuted = bool
-        case .seek(_):
-            break
+        case .seek(let interval):
+            playerView?.seek(to: interval)
         case .back:
             dismiss(animated: true)
         }

@@ -13,7 +13,7 @@ enum IQButtonControlAction {
     case pip(Bool)
     case share
     case mute(Bool)
-    case seek(CGPoint)
+    case seek(TimeInterval)
     case back
     
     var title: String {
@@ -48,7 +48,7 @@ protocol IQBottomControlDelegate: AnyObject {
 class IQBottomControls: UIView {
     
     weak var delegate: IQBottomControlDelegate?
-    let controls: [IQButtonControlAction] = [.play, .pause, .mute(true), .pip(true), .back]
+    let controls: [IQButtonControlAction] = [.play, .pause, .seek(20), .pip(true), .back]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
