@@ -17,7 +17,7 @@ public protocol IQAssetLoaderDelegate {
 
 class IQAssetLoader: NSObject {
     
-    let session: AVContentKeySession = AVContentKeySession(keySystem: .fairPlayStreaming)
+    let session: AVContentKeySession = AVContentKeySession(keySystem: .clearKey)
     let queue = DispatchQueue(label: "fairplay.refresher.queue")
     
     var certificateData: Data?

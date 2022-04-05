@@ -33,6 +33,7 @@
 		3689A18927F917BA0099E9C8 /* IQPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */; };
 		3689A18A27F917BA0099E9C8 /* IQPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3689A0D027F905A10099E9C8 /* IQPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3689A19627F9189A0099E9C8 /* IQAssetLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A19527F9189A0099E9C8 /* IQAssetLoader.swift */; };
+		36CB155427FBAD8900A888BC /* IQBottomControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CB155327FBAD8900A888BC /* IQBottomControls.swift */; };
 		36EE73BE27F99BF000401F1A /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EE73BD27F99BF000401F1A /* Utility.swift */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,7 @@
 		3689A15827F90DB50099E9C8 /* SwiftUI_IQPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_IQPlayerView.swift; sourceTree = "<group>"; };
 		3689A16E27F911BE0099E9C8 /* IQPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerViewController.swift; sourceTree = "<group>"; };
 		3689A19527F9189A0099E9C8 /* IQAssetLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQAssetLoader.swift; sourceTree = "<group>"; };
+		36CB155327FBAD8900A888BC /* IQBottomControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQBottomControls.swift; sourceTree = "<group>"; };
 		36EE73BD27F99BF000401F1A /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -264,6 +266,7 @@
 		3689A0F627F905AB0099E9C8 /* IQPlayerClient */ = {
 			isa = PBXGroup;
 			children = (
+				36CB155227FBAD5A00A888BC /* Controls */,
 				3689A0F727F905AB0099E9C8 /* IQPlayerClient.h */,
 				3689A0F827F905AB0099E9C8 /* Info.plist */,
 				3689A16E27F911BE0099E9C8 /* IQPlayerViewController.swift */,
@@ -327,6 +330,14 @@
 				3689A19527F9189A0099E9C8 /* IQAssetLoader.swift */,
 			);
 			path = IQAssetLoader;
+			sourceTree = "<group>";
+		};
+		36CB155227FBAD5A00A888BC /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				36CB155327FBAD8900A888BC /* IQBottomControls.swift */,
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,6 +589,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36CB155427FBAD8900A888BC /* IQBottomControls.swift in Sources */,
 				3689A16F27F911BE0099E9C8 /* IQPlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

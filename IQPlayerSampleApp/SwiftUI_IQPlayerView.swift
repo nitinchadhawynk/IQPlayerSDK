@@ -15,7 +15,7 @@ import IQPlayerClient
 public final class SwiftUI_IQPlayerView: UIViewRepresentable {
     
     public var playerItem: IQPlayerItem
-    public var controls: IQPlayerControlActionDelegate?
+    public var controls: IQPlayerViewController?
     
     public init(playerItem: IQPlayerItem) {
         self.playerItem = playerItem

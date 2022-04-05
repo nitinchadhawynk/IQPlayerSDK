@@ -9,11 +9,17 @@ import UIKit
 import IQPlayerSDK
 import AVKit
 
+public protocol PictureInPictureDelegate {
+    func presentViewController(vc: UIViewController, completion: @escaping (Bool) -> Void)
+}
+
 public class IQPlayerViewController: UIViewController {
     
     private var item: IQPlayerItem
     private var playerView: IQPlayerView?
     private var button: UIButton?
+    public var pipDelegate: PictureInPictureDelegate?
+    var bottomControls: IQBottomControls?
     
     private var pictureInPictureController: AVPictureInPictureController?
     
@@ -33,14 +39,18 @@ public class IQPlayerViewController: UIViewController {
         playerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         playerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 250, height: 40))
-        self.button = button
-        button.setTitle("PUP MODEL", for: .normal)
-        self.button?.addTarget(self, action: #selector(pipButtonAction(sender:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(button)
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        bottomControls = IQBottomControls(frame: .zero)
+        bottomControls?.delegate = self
+        bottomControls?.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bottomControls!)
+        NSLayoutConstraint.activate([
+            bottomControls!.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomControls!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60),
+            bottomControls!.heightAnchor.constraint(equalToConstant: 50),
+            bottomControls!.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        view.bringSubviewToFront(bottomControls!)
+        
         
         if let playerLayer = playerView.layer() as? AVPlayerLayer {
             pictureInPictureController = AVPictureInPictureController(playerLayer: playerLayer)
@@ -58,15 +68,40 @@ public class IQPlayerViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         addPlayerView()
+        view.backgroundColor = .black
+    }
+    
+    deinit {
+        print("IQPLayerViewController DEINIT")
     }
 }
 
-extension IQPlayerViewController: IQPlayerControlActionDelegate {
+extension IQPlayerViewController: IQBottomControlDelegate {
+    func bottomControlViewActionPerformed(action: IQButtonControlAction) {
+        switch action {
+        case .play:
+            play()
+        case .pause:
+            pause()
+        case .pip(_):
+            startPip()
+        case .share:
+            break
+        case .mute(let bool):
+            playerView?.isMuted = bool
+        case .seek(_):
+            break
+        case .back:
+            dismiss(animated: true)
+        }
+    }
+}
+
+extension IQPlayerViewController {
     
     public func setMuted(enabled: Bool) {
-        playerView?.setMuted(enabled: enabled)
+        playerView?.isMuted = enabled
     }
     
     public func play() {
@@ -77,21 +112,38 @@ extension IQPlayerViewController: IQPlayerControlActionDelegate {
         playerView?.pause()
     }
     
-    public func startPip() {
+    @objc public func startPip() {
         pictureInPictureController?.startPictureInPicture()
     }
 }
 
 extension IQPlayerViewController: AVPictureInPictureControllerDelegate {
     public func pictureInPictureControllerDidStartPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
+        
         print("pictureInPictureControllerDidStartPictureInPicture")
     }
     
+    public func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, restoreUserInterfaceForPictureInPictureStopWithCompletionHandler completionHandler: @escaping (Bool) -> Void) {
+        print("restoreUserInterfaceForPictureInPictureStopWithCompletionHandler")
+        if let vc = activeCustomPlayerViewControllers.first {
+            pipDelegate?.presentViewController(vc: vc, completion: completionHandler)
+        }
+        
+    }
+    
     public func pictureInPictureControllerWillStartPictureInPicture(_ pictureInPictureController: AVPictureInPictureController) {
+        activeCustomPlayerViewControllers.append(self)
+        dismiss(animated: true)
         print("pictureInPictureControllerWillStartPictureInPicture")
     }
     
     public func pictureInPictureController(_ pictureInPictureController: AVPictureInPictureController, failedToStartPictureInPictureWithError error: Error) {
         print("pictureInPictureController")
+        guard activeCustomPlayerViewControllers.isEmpty == false else { return }
+        activeCustomPlayerViewControllers.remove(at: activeCustomPlayerViewControllers.firstIndex(of: self) ?? 0)
     }
+    
+    
 }
+
+var activeCustomPlayerViewControllers = [UIViewController]()

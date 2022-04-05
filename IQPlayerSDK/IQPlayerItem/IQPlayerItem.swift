@@ -13,6 +13,7 @@ public struct IQPlayerItem {
     public var playbackURL: URL
     public var contentID: String
     public var headers: [String: Any]?
+    public var isAutoPlayEnabled = true
     
     var av_playerItem: AVPlayerItem
     var av_asset: AVURLAsset

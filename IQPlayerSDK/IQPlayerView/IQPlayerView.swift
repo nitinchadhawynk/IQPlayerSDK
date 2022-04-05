@@ -12,6 +12,9 @@ public typealias IQPlayerProtocol = IQPlayerControlActionDelegate & IQPlayerView
 
 public class IQPlayerView: UIView {
     
+    private var _isMuted: Bool = false
+    private var _isPaused: Bool = false
+    
     private var playerItem: IQPlayerItem
     public var player: IQPlayerProtocol
     
@@ -34,7 +37,9 @@ public class IQPlayerView: UIView {
     
     private func addPlayerLayer() {
         layer.addSublayer(player.layer)
-        player.play()
+        if playerItem.isAutoPlayEnabled {
+            player.play()
+        }
     }
     
     public func layer() -> CALayer {
@@ -46,21 +51,35 @@ public class IQPlayerView: UIView {
     }
 }
 
-extension IQPlayerView: IQPlayerControlActionDelegate {
-    
-    public func setMuted(enabled: Bool) {
-        self.player.setMuted(enabled: enabled)
-    }
+extension IQPlayerView: IQVideoPlayerInterface {
     
     public func play() {
-        self.player.play()
+        player.play()
     }
-        
+    
     public func pause() {
-        self.player.pause()
+        player.pause()
+    }
+    
+    public func seek() {
+        
     }
         
-    public func startPip() {
-        
+    public var isMuted: Bool {
+        get {
+            return _isMuted
+        }
+        set {
+            _isMuted = newValue
+        }
+    }
+    
+    public var isPaused: Bool {
+        get {
+            return _isPaused
+        }
+        set {
+            _isPaused = newValue
+        }
     }
 }
