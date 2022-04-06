@@ -24,7 +24,7 @@ public class IQPlayerView: UIView {
         self.playerItem = playerItem
         self.player = IQPlayer(playerItem: playerItem)
         super.init(frame: frame)
-        output = IQPlaybackOutputManager(view: self)
+        output = IQPlaybackOutputManager(playerView: self)
         self.playerItem.output = output
         self.player.output = output
         addPlayerLayer()
@@ -51,7 +51,7 @@ public class IQPlayerView: UIView {
     }
     
     public func setDelegate(client: IQPlayerPlaybackConsumer) {
-        self.output.append(client: client)
+        self.output.append(listener: client)
     }
     
     deinit {

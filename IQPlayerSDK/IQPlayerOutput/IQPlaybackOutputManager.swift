@@ -23,7 +23,7 @@ public class IQPlaybackOutputManager {
      * playerView is used to pass as reference while dispatching
      * any action to the observer.
      */
-    weak var playerView: IQPlayerView?
+    private weak var playerView: IQPlayerView?
     
     /**
      * Initializes a IQPlaybackOutputManager. It uses the playerView
@@ -43,69 +43,93 @@ public class IQPlaybackOutputManager {
      * @param json Dictionary representing the deserialized source.
      * @return The initialized source.
      */
-    public func append(client: IQPlayerPlaybackConsumer) {
-        listeners.append(client)
+    public func append(listener: IQPlayerPlaybackConsumer) {
+        listeners.append(listener)
     }
     
-    /// Called when a timebase rate change occurs.
-    func rateChanged(rate: TimeInterval) {
-        //clients.forEach {
-        //$0.rateChanged(rate: rate)
-        //}
-    }
-    
-    func playbackDidEnded() {
-        //clients.forEach {
-        //$0.playbackDidEnded()
-        //}
-    }
-    
-    /// Start playback from beginning
-    func resetPlayHead() {
-        
-    }
-    
-    func playbackProgressChanged(progress: TimeInterval, duration: TimeInterval) {
+    /**
+     * Called with the progress and duration of playback. As the player
+     * media plays, this method is called periodically with the latest progress
+     * interval. We can configure the callback intervals from IQPlayerItemOptions
+     *
+     * @param progress The time interval of the session's current playback progress.
+     * @param duration The complete time duration of the current playback.
+     */
+    func playback(didProgressChangedTo progress: TimeInterval, duration: TimeInterval) {
         guard let view = playerView else { return }
         listeners.forEach {
             $0.playback(playerView: view, didProgressChangedTo: progress, withDuration: duration)
         }
     }
     
-    
-    func playerItemIsReadyToPlay() {
-        guard let view = playerView else { return }
-        listeners.forEach {
-            $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemReadyToPlay)
-        }
-    }
-    
-    
-    func playerReadyToPlay() {
+    /**
+     * Called when player is ready to play AVPlayerItem instances.
+     * Do not consider as player is going to play the content instantly
+     */
+    func playbackPlayerReadyToPlay() {
         guard let view = playerView else { return }
         listeners.forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerReadyToPlay)
         }
     }
     
-    func playerItemFailed(error: Error?) {
+    /**
+     * Called when player item is ready to be played.
+     * Indicates the player is ready start the playback
+     */
+    func playbackPlayerItemReadyToPlay() {
+        guard let view = playerView else { return }
+        listeners.forEach {
+            $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemReadyToPlay)
+        }
+    }
+    
+    /**
+     * Called when player item can no longer be played because of an error. The error is described by the value of
+     * the IQPlayerItem's error property.
+     * @param error
+     * Indicates about the error which has recieved while playing the content.
+     * Look for localized and debug description of the error for more clarity.
+     */
+    func playback(playerItemFailedWithError error: Error?) {
         guard let view = playerView else { return }
         listeners.forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemFailed(error))
         }
     }
     
-    func playerFailed(error: Error?) {
+    /**
+     * Indicates that the player can no longer play IQPlayerItem instances because of an error. The error is passed in
+     * parameter, Look for localized and debug description of the error for more clarity.
+     */
+    func playback(playerFailedWithError error: Error?) {
         guard let view = playerView else { return }
         listeners.forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerFailed(error))
         }
     }
     
-    func playerItemUnknown() {
-        
+    /**
+     * Indicates that the status of the player is not yet known because it has not tried to load new media resources for
+     * playback.
+     */
+    func playbackPlayerStatusChangedToUnknown() {
+        guard let view = playerView else { return }
+        listeners.forEach {
+            $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerUnknown)
+        }
     }
     
+    /**
+     * Indicates that the status of the player item is not yet known because it has not tried to load new media resources
+     * for playback.
+     */
+    func playbackPlayerItemStatusChangedToUnknown() {
+        guard let view = playerView else { return }
+        listeners.forEach {
+            $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemUnknown)
+        }
+    }
 }
 
 

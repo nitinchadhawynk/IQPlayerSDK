@@ -95,8 +95,8 @@ extension IQPlayer {
                                           queue: DispatchQueue.main) { [weak self] time in
             guard let self = self else { return }
             let duration = self.av_player.currentItem?.asset.duration ?? CMTime(seconds: 0, preferredTimescale: 1000)
-            self.output?.playbackProgressChanged(progress: CMTimeGetSeconds(time),
-                                                           duration: CMTimeGetSeconds(duration))
+            self.output?.playback(didProgressChangedTo: CMTimeGetSeconds(time),
+                                  duration: CMTimeGetSeconds(duration))
         }
         
         // [LOGGING] Add observer for player status
@@ -163,10 +163,10 @@ extension IQPlayer {
             // Switch over the status
             switch status {
             case .readyToPlay:
-                output?.playerItemIsReadyToPlay()
+                output?.playbackPlayerItemReadyToPlay()
                 writeToConsole("Player item is ready to play", "Playback")
             case .failed:
-                output?.playerItemFailed(error: av_player.currentItem?.error)
+                output?.playback(playerItemFailedWithError: av_player.currentItem?.error)
                 writeToConsole("Player item failed error: \(String(describing: av_player.currentItem?.error?.localizedDescription))\n Debug info: \(String(describing: av_player.currentItem?.error.debugDescription))","Playback")
             case .unknown:
                 writeToConsole("Player item is not yet ready","Playback")
@@ -189,10 +189,10 @@ extension IQPlayer {
             // Switch over the status
             switch status {
             case .readyToPlay:
-                output?.playerReadyToPlay()
+                output?.playbackPlayerReadyToPlay()
                 writeToConsole("Player is ready to play AVPlayerItem instances","Playback")
             case .failed:
-                output?.playerFailed(error: av_player.error)
+                output?.playback(playerFailedWithError: av_player.error)
                 writeToConsole("Player can no longer play AVPlayerItem instances because of an error: \(String(describing: av_player.error?.localizedDescription))\n Debug info: \(String(describing: av_player.error.debugDescription))","Playback")
             case .unknown:
                 writeToConsole("Player is not yet ready","Playback")

@@ -11,7 +11,12 @@ import IQPlayerClient
 import IQPlayerSDK
 
 struct OutputManager: IQPlayerPlaybackConsumer {
-    func playback(view: IQPlayerView, didProgressChangedTo progress: TimeInterval, withDuration duration: TimeInterval) {
+    
+    func playback(playerView: IQPlayerView, didReceivePlaybackLifeCycleEvent event: IQPlayerLifeCycleEvent) {
+            print("NC EVENT : \(event)")
+    }
+    
+    func playback(playerView view: IQPlayerView, didProgressChangedTo progress: TimeInterval, withDuration duration: TimeInterval) {
         print("\(progress) \(duration)")
     }
     
