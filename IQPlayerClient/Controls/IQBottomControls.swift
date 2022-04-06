@@ -15,6 +15,8 @@ enum IQButtonControlAction {
     case mute(Bool)
     case seek(TimeInterval)
     case back
+    case forward
+    case backward
     
     var title: String {
         switch(self) {
@@ -25,6 +27,8 @@ enum IQButtonControlAction {
         case .mute(_): return "Mute"
         case .seek(_): return "Seek"
         case .back: return "Back"
+        case .forward: return " >> "
+        case .backward: return " << "
         }
     }
     
@@ -37,6 +41,8 @@ enum IQButtonControlAction {
         case .mute(_): return 4
         case .seek(_): return 5
         case .back: return 6
+        case .forward: return 7
+        case .backward: return 8
         }
     }
 }
@@ -48,11 +54,12 @@ protocol IQBottomControlDelegate: AnyObject {
 class IQBottomControls: UIView {
     
     weak var delegate: IQBottomControlDelegate?
-    let controls: [IQButtonControlAction] = [.play, .pause, .seek(20), .pip(true), .back]
+    var controls: [IQButtonControlAction] = [.play, .pause, .forward, .backward, .pip(true), .back]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addButtons()
+        
     }
     
     required init?(coder: NSCoder) {

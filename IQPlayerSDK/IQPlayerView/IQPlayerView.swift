@@ -12,9 +12,6 @@ public typealias IQPlayerProtocol = IQPlayerControlActionDelegate & IQPlayerView
 
 public class IQPlayerView: UIView {
     
-    private var _isMuted: Bool = false
-    private var _isPaused: Bool = false
-    
     private var playerItem: IQPlayerItem
     var player: IQPlayer
     
@@ -81,6 +78,10 @@ extension IQPlayerView: IQVideoPlayerInterface {
         player.reset()
     }
     
+    public func stop() {
+        player.pause()
+    }
+    
     public func duration() -> TimeInterval {
         return playerItem.duration()
     }
@@ -90,14 +91,17 @@ extension IQPlayerView: IQVideoPlayerInterface {
         set { player.isMuted = newValue }
     }
     
-    public var isPaused: Bool {
-        get { return _isPaused }
-        set { _isPaused = newValue }
+    public func moveForward() {
+        player.seekForwardAndPlay(play: true)
+    }
+    
+    public func moveBackward() {
+        player.seekBackwardAndPlay(play: true)
     }
     
     public func qualitySelected(with bitrate: Int) {
         let playedTime = currentTime
-        playerItem.qualitySelected(at: 10)
+        //playerItem.qualitySelected(at: 10)
         
         /*
         AVPlayerItem *currentItem = self.fairPlayVideoPlayback.player.currentItem;

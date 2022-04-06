@@ -56,7 +56,8 @@ public class IQPlayerViewController: UIViewController {
         view.bringSubviewToFront(bottomControls!)
         
         
-        if let playerLayer = playerView.layer() as? AVPlayerLayer {
+        if let playerLayer = playerView.layer() as? AVPlayerLayer,
+            AVPictureInPictureController.isPictureInPictureSupported() {
             pictureInPictureController = AVPictureInPictureController(playerLayer: playerLayer)
             pictureInPictureController?.delegate = self
         }
@@ -98,6 +99,11 @@ extension IQPlayerViewController: IQBottomControlDelegate {
             playerView?.seek(to: interval)
         case .back:
             dismiss(animated: true)
+            stop()
+        case .forward:
+            playerView?.moveForward()
+        case .backward:
+            playerView?.moveBackward()
         }
     }
 }
@@ -118,6 +124,11 @@ extension IQPlayerViewController {
     
     @objc public func startPip() {
         pictureInPictureController?.startPictureInPicture()
+    }
+    
+    public func stop() {
+        playerView?.removeFromSuperview()
+        playerView = nil
     }
 }
 

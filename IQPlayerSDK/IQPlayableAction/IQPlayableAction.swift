@@ -23,5 +23,4 @@ public protocol IQVideoPlayerInterface {
     func seek(to time: TimeInterval)
     
     var isMuted: Bool { get set }
-    var isPaused: Bool { get set }
 }

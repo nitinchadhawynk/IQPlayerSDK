@@ -42,7 +42,7 @@ class SampleViewController: UIViewController, PictureInPictureDelegate {
         }
     }
     
-    
+    var controller: IQPlayerViewController!
     let button = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 30))
     
     init() {
@@ -69,7 +69,7 @@ class SampleViewController: UIViewController, PictureInPictureDelegate {
     
     @objc func buttonAction() {
         let item = SampleApplicationPlayerViewModel()
-        let controller = IQPlayerViewController(playerItem: item.playerItem)
+        controller = IQPlayerViewController(playerItem: item.playerItem)
         controller.pipDelegate = self
         controller.outputDelegate = OutputManager()
         present(controller, animated: true)

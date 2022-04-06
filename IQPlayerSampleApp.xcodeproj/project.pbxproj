@@ -10,6 +10,23 @@
 		36656C9D27FCEA1A006715CF /* IQVideoPlayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656C9C27FCEA1A006715CF /* IQVideoPlayerOptions.swift */; };
 		36656C9F27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656C9E27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift */; };
 		36656CA127FCF346006715CF /* IQPlayerLifeCycleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CA027FCF346006715CF /* IQPlayerLifeCycleEvent.swift */; };
+		36656CA927FD87AC006715CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CA827FD87AC006715CF /* AppDelegate.swift */; };
+		36656CAB27FD87AC006715CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CAA27FD87AC006715CF /* ViewController.swift */; };
+		36656CAE27FD87AC006715CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36656CAC27FD87AC006715CF /* Main.storyboard */; };
+		36656CB027FD87B0006715CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36656CAF27FD87B0006715CF /* Assets.xcassets */; };
+		36656CB327FD87B0006715CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36656CB127FD87B0006715CF /* LaunchScreen.storyboard */; };
+		36656CDB27FD8C9E006715CF /* MediaSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CD027FD8C9D006715CF /* MediaSegment.swift */; };
+		36656CDC27FD8C9E006715CF /* FileBufferedReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CD127FD8C9D006715CF /* FileBufferedReader.swift */; };
+		36656CDD27FD8C9E006715CF /* ManifestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CD227FD8C9D006715CF /* ManifestBuilder.swift */; };
+		36656CDE27FD8C9E006715CF /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CD327FD8C9D006715CF /* StreamReader.swift */; };
+		36656CDF27FD8C9E006715CF /* StringBufferedReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CD427FD8C9D006715CF /* StringBufferedReader.swift */; };
+		36656CE027FD8C9E006715CF /* BufferedReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CD527FD8C9D006715CF /* BufferedReader.swift */; };
+		36656CE127FD8C9E006715CF /* MasterPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CD627FD8C9D006715CF /* MasterPlaylist.swift */; };
+		36656CE227FD8C9E006715CF /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CD727FD8C9D006715CF /* StringExtensions.swift */; };
+		36656CE327FD8C9E006715CF /* NSURLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CD827FD8C9E006715CF /* NSURLExtension.swift */; };
+		36656CE427FD8C9E006715CF /* ReaderBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CD927FD8C9E006715CF /* ReaderBuilder.swift */; };
+		36656CE527FD8C9E006715CF /* MediaPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CDA27FD8C9E006715CF /* MediaPlaylist.swift */; };
+		36656CE727FD8D42006715CF /* URLBufferedReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CE627FD8D42006715CF /* URLBufferedReader.swift */; };
 		3689A0B727F905820099E9C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A0B627F905820099E9C8 /* AppDelegate.swift */; };
 		3689A0B927F905820099E9C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A0B827F905820099E9C8 /* SceneDelegate.swift */; };
 		3689A0BB27F905820099E9C8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3689A0BA27F905820099E9C8 /* ContentView.swift */; };
@@ -124,6 +141,24 @@
 		36656C9C27FCEA1A006715CF /* IQVideoPlayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQVideoPlayerOptions.swift; sourceTree = "<group>"; };
 		36656C9E27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerPlaybackConsumer.swift; sourceTree = "<group>"; };
 		36656CA027FCF346006715CF /* IQPlayerLifeCycleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerLifeCycleEvent.swift; sourceTree = "<group>"; };
+		36656CA627FD87AC006715CF /* IQPlayerTVOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IQPlayerTVOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		36656CA827FD87AC006715CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		36656CAA27FD87AC006715CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		36656CAD27FD87AC006715CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		36656CAF27FD87B0006715CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		36656CB227FD87B0006715CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		36656CD027FD8C9D006715CF /* MediaSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSegment.swift; sourceTree = "<group>"; };
+		36656CD127FD8C9D006715CF /* FileBufferedReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileBufferedReader.swift; sourceTree = "<group>"; };
+		36656CD227FD8C9D006715CF /* ManifestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManifestBuilder.swift; sourceTree = "<group>"; };
+		36656CD327FD8C9D006715CF /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
+		36656CD427FD8C9D006715CF /* StringBufferedReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringBufferedReader.swift; sourceTree = "<group>"; };
+		36656CD527FD8C9D006715CF /* BufferedReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedReader.swift; sourceTree = "<group>"; };
+		36656CD627FD8C9D006715CF /* MasterPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterPlaylist.swift; sourceTree = "<group>"; };
+		36656CD727FD8C9D006715CF /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		36656CD827FD8C9E006715CF /* NSURLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLExtension.swift; sourceTree = "<group>"; };
+		36656CD927FD8C9E006715CF /* ReaderBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderBuilder.swift; sourceTree = "<group>"; };
+		36656CDA27FD8C9E006715CF /* MediaPlaylist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlaylist.swift; sourceTree = "<group>"; };
+		36656CE627FD8D42006715CF /* URLBufferedReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLBufferedReader.swift; sourceTree = "<group>"; };
 		3689A0B327F905820099E9C8 /* IQPlayerSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IQPlayerSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3689A0B627F905820099E9C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3689A0B827F905820099E9C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +194,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		36656CA327FD87AB006715CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3689A0B027F905820099E9C8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,6 +244,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36656CA727FD87AC006715CF /* IQPlayerTVOS */ = {
+			isa = PBXGroup;
+			children = (
+				36656CA827FD87AC006715CF /* AppDelegate.swift */,
+				36656CAA27FD87AC006715CF /* ViewController.swift */,
+				36656CAC27FD87AC006715CF /* Main.storyboard */,
+				36656CAF27FD87B0006715CF /* Assets.xcassets */,
+				36656CB127FD87B0006715CF /* LaunchScreen.storyboard */,
+			);
+			path = IQPlayerTVOS;
+			sourceTree = "<group>";
+		};
+		36656CCF27FD8C8C006715CF /* ManifestReader */ = {
+			isa = PBXGroup;
+			children = (
+				36656CD527FD8C9D006715CF /* BufferedReader.swift */,
+				36656CD127FD8C9D006715CF /* FileBufferedReader.swift */,
+				36656CE627FD8D42006715CF /* URLBufferedReader.swift */,
+				36656CD227FD8C9D006715CF /* ManifestBuilder.swift */,
+				36656CD627FD8C9D006715CF /* MasterPlaylist.swift */,
+				36656CDA27FD8C9E006715CF /* MediaPlaylist.swift */,
+				36656CD027FD8C9D006715CF /* MediaSegment.swift */,
+				36656CD827FD8C9E006715CF /* NSURLExtension.swift */,
+				36656CD927FD8C9E006715CF /* ReaderBuilder.swift */,
+				36656CD327FD8C9D006715CF /* StreamReader.swift */,
+				36656CD427FD8C9D006715CF /* StringBufferedReader.swift */,
+				36656CD727FD8C9D006715CF /* StringExtensions.swift */,
+			);
+			path = ManifestReader;
+			sourceTree = "<group>";
+		};
 		3689A0AA27F905820099E9C8 = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +283,7 @@
 				3689A0DE27F905A10099E9C8 /* IQPlayerSDKTests */,
 				3689A0F627F905AB0099E9C8 /* IQPlayerClient */,
 				3689A10327F905AC0099E9C8 /* IQPlayerClientTests */,
+				36656CA727FD87AC006715CF /* IQPlayerTVOS */,
 				3689A0B427F905820099E9C8 /* Products */,
 				3689A18827F917BA0099E9C8 /* Frameworks */,
 			);
@@ -223,6 +297,7 @@
 				3689A0D827F905A10099E9C8 /* IQPlayerSDKTests.xctest */,
 				3689A0F527F905AB0099E9C8 /* IQPlayerClient.framework */,
 				3689A0FD27F905AC0099E9C8 /* IQPlayerClientTests.xctest */,
+				36656CA627FD87AC006715CF /* IQPlayerTVOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -253,6 +328,7 @@
 		3689A0D127F905A10099E9C8 /* IQPlayerSDK */ = {
 			isa = PBXGroup;
 			children = (
+				36656CCF27FD8C8C006715CF /* ManifestReader */,
 				36CB155527FCBBAC00A888BC /* IQPlayerOutput */,
 				3689A13327F906820099E9C8 /* IQPlayer */,
 				3689A12827F906180099E9C8 /* IQPlayableAction */,
@@ -385,6 +461,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		36656CA527FD87AB006715CF /* IQPlayerTVOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36656CB427FD87B0006715CF /* Build configuration list for PBXNativeTarget "IQPlayerTVOS" */;
+			buildPhases = (
+				36656CA227FD87AB006715CF /* Sources */,
+				36656CA327FD87AB006715CF /* Frameworks */,
+				36656CA427FD87AB006715CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IQPlayerTVOS;
+			productName = IQPlayerTVOS;
+			productReference = 36656CA627FD87AC006715CF /* IQPlayerTVOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		3689A0B227F905820099E9C8 /* IQPlayerSampleApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3689A0C727F905840099E9C8 /* Build configuration list for PBXNativeTarget "IQPlayerSampleApp" */;
@@ -487,9 +580,12 @@
 		3689A0AB27F905820099E9C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					36656CA527FD87AB006715CF = {
+						CreatedOnToolsVersion = 13.3;
+					};
 					3689A0B227F905820099E9C8 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -529,11 +625,22 @@
 				3689A0D727F905A10099E9C8 /* IQPlayerSDKTests */,
 				3689A0F427F905AB0099E9C8 /* IQPlayerClient */,
 				3689A0FC27F905AC0099E9C8 /* IQPlayerClientTests */,
+				36656CA527FD87AB006715CF /* IQPlayerTVOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		36656CA427FD87AB006715CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36656CB327FD87B0006715CF /* LaunchScreen.storyboard in Resources */,
+				36656CB027FD87B0006715CF /* Assets.xcassets in Resources */,
+				36656CAE27FD87AC006715CF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3689A0B127F905820099E9C8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -575,6 +682,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		36656CA227FD87AB006715CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36656CAB27FD87AC006715CF /* ViewController.swift in Sources */,
+				36656CA927FD87AC006715CF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3689A0AF27F905820099E9C8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -593,15 +709,27 @@
 				36EE73BE27F99BF000401F1A /* Utility.swift in Sources */,
 				3689A13527F9068C0099E9C8 /* IQPlayer.swift in Sources */,
 				3689A12A27F906240099E9C8 /* IQPlayableAction.swift in Sources */,
+				36656CDD27FD8C9E006715CF /* ManifestBuilder.swift in Sources */,
 				3689A15327F90B1A0099E9C8 /* IQPlayerViewProtocol.swift in Sources */,
 				36656CA127FCF346006715CF /* IQPlayerLifeCycleEvent.swift in Sources */,
 				36656C9F27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift in Sources */,
 				3689A11827F905C80099E9C8 /* IQPlayerItem.swift in Sources */,
 				36CB155927FCBBF900A888BC /* IQPlayerPerformance.swift in Sources */,
+				36656CE027FD8C9E006715CF /* BufferedReader.swift in Sources */,
 				3689A11F27F905EA0099E9C8 /* IQPlayerView.swift in Sources */,
 				3689A19627F9189A0099E9C8 /* IQAssetLoader.swift in Sources */,
+				36656CE427FD8C9E006715CF /* ReaderBuilder.swift in Sources */,
+				36656CE227FD8C9E006715CF /* StringExtensions.swift in Sources */,
+				36656CE327FD8C9E006715CF /* NSURLExtension.swift in Sources */,
+				36656CE527FD8C9E006715CF /* MediaPlaylist.swift in Sources */,
+				36656CDF27FD8C9E006715CF /* StringBufferedReader.swift in Sources */,
 				36CB155727FCBBC700A888BC /* IQPlaybackOutputManager.swift in Sources */,
+				36656CDE27FD8C9E006715CF /* StreamReader.swift in Sources */,
+				36656CE727FD8D42006715CF /* URLBufferedReader.swift in Sources */,
+				36656CDC27FD8C9E006715CF /* FileBufferedReader.swift in Sources */,
+				36656CE127FD8C9E006715CF /* MasterPlaylist.swift in Sources */,
 				36656C9D27FCEA1A006715CF /* IQVideoPlayerOptions.swift in Sources */,
+				36656CDB27FD8C9E006715CF /* MediaSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +799,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		36656CAC27FD87AC006715CF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36656CAD27FD87AC006715CF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		36656CB127FD87B0006715CF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36656CB227FD87B0006715CF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		3689A0C127F905840099E9C8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -682,6 +826,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		36656CB527FD87B0006715CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MUDQS82F6P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nitin.chadha.IQPlayerTVOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.4;
+			};
+			name = Debug;
+		};
+		36656CB627FD87B0006715CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = MUDQS82F6P;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nitin.chadha.IQPlayerTVOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.4;
+			};
+			name = Release;
+		};
 		3689A0C527F905840099E9C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1049,6 +1249,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		36656CB427FD87B0006715CF /* Build configuration list for PBXNativeTarget "IQPlayerTVOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36656CB527FD87B0006715CF /* Debug */,
+				36656CB627FD87B0006715CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3689A0AE27F905820099E9C8 /* Build configuration list for PBXProject "IQPlayerSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

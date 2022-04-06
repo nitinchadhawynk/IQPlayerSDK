@@ -11,6 +11,7 @@ import AVFoundation
 
 class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
     
+    
     private let playerItem: IQPlayerItem
     var isStalling = false
     
@@ -69,7 +70,12 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
     }
     
     func startPip() {
-        
+            
+    }
+            
+    func stop() {
+        pause()
+        av_player.replaceCurrentItem(with: nil)
     }
     
     func seek(to time: TimeInterval) {
@@ -80,6 +86,17 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
     func reset() {
         av_player.seek(to: CMTime.zero)
     }
+    
+    func seekForwardAndPlay(play: Bool) {
+        let time = playerItem.seekForwardTimeInterval()
+        let myTime = CMTime(seconds: time + currentTime, preferredTimescale: 60000)
+        av_player.seek(to: myTime, toleranceBefore: .zero, toleranceAfter: .zero)
+    }
+    
+    func seekBackwardAndPlay(play: Bool) {
+        
+    }
+    
     
     deinit {
         print("IQPlayer DEINIT")
@@ -140,9 +157,6 @@ extension IQPlayer {
         
         // [LOGGING] A media selection group changed its selected option
         NotificationCenter.default.addObserver(self, selector: #selector(mediaSelectionDidChange), name: AVPlayerItem.mediaSelectionDidChangeNotification, object: av_player.currentItem)
-        
-        // [MANDATORY] ContentKey delegate did save a Persistable Content Key
-        //NotificationCenter.default.addObserver(self, selector: #selector(handleContentKeyDelegateHasAvailablePersistableContentKey(notification:)), name: .HasAvailablePersistableContentKey, object: nil)
     }
     
     override func observeValue(forKeyPath keyPath: String?,
