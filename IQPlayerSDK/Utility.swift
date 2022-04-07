@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Date {
     func toMillis() -> Int64! {
@@ -21,4 +22,38 @@ func bytesToHumanReadable(bytes: Double) -> String {
     }
     
     return formatter.string(fromByteCount: Int64(bytes)) + "/s"
+}
+
+class AcitivityIndicatorView {
+    
+    var indicator: UIActivityIndicatorView
+    
+    init(view: UIView) {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.color = .gray
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.hidesWhenStopped = true
+        
+        view.addSubview(indicator)
+        NSLayoutConstraint.activate([
+            indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        self.indicator = indicator
+    }
+    
+    func show() {
+        indicator.startAnimating()
+    }
+    
+    func hide() {
+        indicator.stopAnimating()
+    }
+}
+
+class Weak<T: AnyObject> {
+  weak var value : T?
+  init (value: T) {
+    self.value = value
+  }
 }

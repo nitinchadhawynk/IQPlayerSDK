@@ -87,7 +87,9 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
     }
     
     func seekBackwardAndPlay(play: Bool) {
-        
+        let time = playerItem.seekBackwardTimeInterval()
+        let myTime = CMTime(seconds: currentTime - time, preferredTimescale: 60000)
+        av_player.seek(to: myTime, toleranceBefore: .zero, toleranceAfter: .zero)
     }
     
     public func select(gravity: IQVideoGravity) {
@@ -101,6 +103,24 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
 
 extension IQPlayer {
     
+    func getLiveDuration() -> Float {
+        var result : Float = 0.0;
+
+        if let items = av_player.currentItem?.seekableTimeRanges {
+
+            if(!items.isEmpty) {
+                let range = items[items.count - 1]
+                let timeRange = range.timeRangeValue
+                let startSeconds = CMTimeGetSeconds(timeRange.start)
+                let durationSeconds = CMTimeGetSeconds(timeRange.duration)
+
+                result = Float(startSeconds + durationSeconds)
+            }
+
+        }
+        return result
+    }
+    
     func addObservers() {
         
         av_player.addPeriodicTimeObserver(forInterval:
@@ -108,6 +128,8 @@ extension IQPlayer {
                                           queue: DispatchQueue.main) { [weak self] time in
             guard let self = self else { return }
             let duration = self.av_player.currentItem?.asset.duration ?? CMTime(seconds: 0, preferredTimescale: 1000)
+            print("NC: Duration \(CMTimeGetSeconds(duration))")
+            print("NC: LIVE Duration \(self.getLiveDuration())")
             self.output?.playback(didProgressChangedTo: CMTimeGetSeconds(time),
                                   duration: CMTimeGetSeconds(duration))
         }
@@ -161,29 +183,25 @@ extension IQPlayer {
                                of object: Any?,
                                change: [NSKeyValueChangeKey : Any]?,
                                context: UnsafeMutableRawPointer?) {
-        // Player Item Status
+        
         if keyPath == #keyPath(av_player.currentItem.status) {
             let status: AVPlayerItem.Status
             
-            // Get the status change from the change dictionary
             if let statusNumber = change?[.newKey] as? NSNumber {
                 status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
             } else {
                 status = .unknown
             }
             
-            // Switch over the status
             switch status {
             case .readyToPlay:
                 output?.playbackPlayerItemReadyToPlay()
-                writeToConsole("Player item is ready to play", "Playback")
             case .failed:
                 output?.playback(playerItemFailedWithError: av_player.currentItem?.error)
-                writeToConsole("Player item failed error: \(String(describing: av_player.currentItem?.error?.localizedDescription))\n Debug info: \(String(describing: av_player.currentItem?.error.debugDescription))","Playback")
             case .unknown:
-                writeToConsole("Player item is not yet ready","Playback")
+                output?.playbackPlayerItemStatusChangedToUnknown()
             @unknown default:
-                writeToConsole("UNEXPECTED STATUS","Playback")
+                output?.playbackPlayerItemStatusChangedToUnknown()
             }
         }
         
@@ -226,14 +244,12 @@ extension IQPlayer {
             switch status {
             case .readyToPlay:
                 output?.playbackPlayerReadyToPlay()
-                writeToConsole("Player is ready to play AVPlayerItem instances","Playback")
             case .failed:
                 output?.playback(playerFailedWithError: av_player.error)
-                writeToConsole("Player can no longer play AVPlayerItem instances because of an error: \(String(describing: av_player.error?.localizedDescription))\n Debug info: \(String(describing: av_player.error.debugDescription))","Playback")
             case .unknown:
-                writeToConsole("Player is not yet ready","Playback")
+                output?.playbackPlayerStatusChangedToUnknown()
             @unknown default:
-                writeToConsole("UNEXPECTED STATUS","Playback")
+                output?.playbackPlayerStatusChangedToUnknown()
             }
         }
         
@@ -313,18 +329,15 @@ extension IQPlayer {
     }
     
     
-    // [LOGGING]
     // Item has failed to play to its end time
     @objc func itemFailedToPlayToEndTime(_ notification: Notification) {
         let error:Error? = notification.userInfo!["AVPlayerItemFailedToPlayToEndTimeErrorKey"] as? Error
-        
-        writeToConsole("Item failed to play to the end. Error: \(String(describing:error?.localizedDescription)), error: \(String(describing: error))",  "Playback")
+        output?.playback(playerItemFailedWithError: error)
     }
     
     // Item has played to its end time
-    // [LOGGING]
     @objc func itemDidPlayToEndTime(_ notification: Notification) {
-        writeToConsole("Item has played to its end time",  "Playback")
+        output?.playbackDidEnd()
     }
     
     // Media did not arrive in time to continue playback

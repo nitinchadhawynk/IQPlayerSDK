@@ -137,6 +137,7 @@ public class IQPlaybackOutputManager {
      */
     func playbackStartedLoading() {
         guard let view = playerView else { return }
+        view.showActivityIndicator()
         listeners.forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemloading)
         }
@@ -148,8 +149,19 @@ public class IQPlaybackOutputManager {
      */
     func playbackStartedPlaying() {
         guard let view = playerView else { return }
+        view.hideActivityIndicator()
         listeners.forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemNotLoading)
+        }
+    }
+    
+    /**
+     * Indicates that the playback in player item has ended.
+     */
+    func playbackDidEnd() {
+        guard let view = playerView else { return }
+        listeners.forEach {
+            $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playbackEnded)
         }
     }
 }

@@ -18,6 +18,8 @@ public class IQPlayerView: UIView {
     
     private var output: IQPlaybackOutputManager!
     
+    private var loader: AcitivityIndicatorView?
+    
     public init(frame: CGRect, playerItem: IQPlayerItem) {
         self.playerItem = playerItem
         self.player = IQPlayer(playerItem: playerItem)
@@ -111,7 +113,20 @@ extension IQPlayerView: IQVideoPlayerInterface {
 }
 
 public extension IQPlayerView {
-    public func select(gravity: IQVideoGravity) {
-            player.select(gravity: gravity)
+    func select(gravity: IQVideoGravity) {
+        player.select(gravity: gravity)
+    }
+    
+    func showActivityIndicator() {
+        guard playerItem.options.isPlayerLoaderEnabled else { return }
+        
+        if loader == nil {
+            self.loader = AcitivityIndicatorView(view: self)
         }
+        loader?.show()
+    }
+    
+    func hideActivityIndicator() {
+        loader?.hide()
+    }
 }

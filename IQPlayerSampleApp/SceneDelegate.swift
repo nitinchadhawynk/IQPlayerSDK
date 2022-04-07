@@ -10,14 +10,14 @@ import SwiftUI
 import IQPlayerClient
 import IQPlayerSDK
 
-struct OutputManager: IQPlayerPlaybackConsumer {
+class OutputManager: IQPlayerPlaybackConsumer {
     
     func playback(playerView: IQPlayerView, didReceivePlaybackLifeCycleEvent event: IQPlayerLifeCycleEvent) {
             print("NC EVENT : \(event)")
     }
     
     func playback(playerView view: IQPlayerView, didProgressChangedTo progress: TimeInterval, withDuration duration: TimeInterval) {
-        print("\(progress) \(duration)")
+        print("NC PROGRESS : \(progress) \(duration)")
     }
     
     func playback(view: IQPlayerView, didProgressChangedTo interval: TimeInterval) {

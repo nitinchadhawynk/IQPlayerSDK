@@ -10,7 +10,7 @@ import Foundation
 /**
  * Conform to this protocol to receive basic playback information for each session.
  */
-public protocol IQPlayerPlaybackConsumer {
+public protocol IQPlayerPlaybackConsumer: AnyObject {
     
     /**
      * Called with the playerView's playback progress. As the player

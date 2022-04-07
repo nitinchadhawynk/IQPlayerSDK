@@ -16,6 +16,8 @@ public struct IQPlayerItem {
     
     public var autoPlay = true
     
+    public var isLive = false
+    
     internal var output: IQPlaybackOutputManager?
     
     public var options: IQPlayerItemOptionsProtocol = IQPlayerItemOptions()
@@ -48,6 +50,15 @@ public struct IQPlayerItem {
     
     func seekForwardTimeInterval() -> TimeInterval {
         switch options.seekForward {
+        case .durationRatio(let ratio):
+            return duration() * Double(ratio)
+        case .position(let position):
+            return position
+        }
+    }
+    
+    func seekBackwardTimeInterval() -> TimeInterval {
+        switch options.seekBackward {
         case .durationRatio(let ratio):
             return duration() * Double(ratio)
         case .position(let position):

@@ -88,7 +88,6 @@ class IQBottomControls: UIView {
             let button = UIButton(frame: .zero)
             button.setTitle(control.title, for: .normal)
             button.sizeToFit()
-            button.backgroundColor = .darkGray
             button.tag = control.tag
             button.addTarget(self, action: #selector(playButtonAction(sender:)), for: .touchUpInside)
             subViews.append(button)
@@ -110,7 +109,6 @@ class IQBottomControls: UIView {
                 let button = UIButton(frame: .zero)
                 button.setTitle(control.title, for: .normal)
                 button.sizeToFit()
-                button.backgroundColor = .darkGray
                 button.tag = control.tag
                 button.addTarget(self, action: #selector(playButtonAction(sender:)), for: .touchUpInside)
                 newsubViews.append(button)
@@ -133,7 +131,6 @@ class IQBottomControls: UIView {
         newStackView.sizeToFit()
         newStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(newStackView)
-        newStackView.backgroundColor = .blue
         
         NSLayoutConstraint.activate([
             newStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
