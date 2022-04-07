@@ -17,6 +17,10 @@ enum IQButtonControlAction {
     case back
     case forward
     case backward
+    case custom(String, Int)
+    case fill
+    case aspectFit
+    case aspectFill
     
     var title: String {
         switch(self) {
@@ -29,6 +33,10 @@ enum IQButtonControlAction {
         case .back: return "Back"
         case .forward: return " >> "
         case .backward: return " << "
+        case .fill: return "fill"
+        case .aspectFit: return "aspectFit"
+        case .aspectFill: return "aspectFill"
+        case .custom(let title, _): return title
         }
     }
     
@@ -43,6 +51,10 @@ enum IQButtonControlAction {
         case .back: return 6
         case .forward: return 7
         case .backward: return 8
+        case .custom(_, let tag): return tag
+        case .fill: return 100
+        case .aspectFit: return 101
+        case .aspectFill: return 102
         }
     }
 }
@@ -55,12 +67,14 @@ class IQBottomControls: UIView {
     
     weak var delegate: IQBottomControlDelegate?
     var controls: [IQButtonControlAction] = [.play, .pause, .forward, .backward, .pip(true), .back]
-    var bottomControl: [IQButtonControlAction] = [.share]
+    var bottomControlArray = [[IQButtonControlAction]]()
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, customButtons: [[IQButtonControlAction]]? = nil) {
         super.init(frame: frame)
+        if let customButtons = customButtons {
+            bottomControlArray = customButtons
+        }
         addButtons()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -74,6 +88,7 @@ class IQBottomControls: UIView {
             let button = UIButton(frame: .zero)
             button.setTitle(control.title, for: .normal)
             button.sizeToFit()
+            button.backgroundColor = .darkGray
             button.tag = control.tag
             button.addTarget(self, action: #selector(playButtonAction(sender:)), for: .touchUpInside)
             subViews.append(button)
@@ -88,36 +103,62 @@ class IQBottomControls: UIView {
         //addSubview(stack)
         stackViews.append(stack)
         
-        var newsubViews = [UIView]()
-        for control in bottomControl {
-            let button = UIButton(frame: .zero)
-            button.setTitle(control.title, for: .normal)
-            button.sizeToFit()
-            button.tag = control.tag
-            button.addTarget(self, action: #selector(playButtonAction(sender:)), for: .touchUpInside)
-            newsubViews.append(button)
+        for bottomControl in bottomControlArray {
+            
+            var newsubViews = [UIView]()
+            for control in bottomControl {
+                let button = UIButton(frame: .zero)
+                button.setTitle(control.title, for: .normal)
+                button.sizeToFit()
+                button.backgroundColor = .darkGray
+                button.tag = control.tag
+                button.addTarget(self, action: #selector(playButtonAction(sender:)), for: .touchUpInside)
+                newsubViews.append(button)
+            }
+            
+            let new_stack = UIStackView(arrangedSubviews: newsubViews)
+            new_stack.spacing = 30
+            new_stack.alignment = .center
+            new_stack.axis = .horizontal
+            new_stack.sizeToFit()
+            new_stack.translatesAutoresizingMaskIntoConstraints = false
+            stackViews.append(new_stack)
+            
         }
-        
-        let new_stack = UIStackView(arrangedSubviews: newsubViews)
-        new_stack.spacing = 30
-        new_stack.alignment = .center
-        new_stack.axis = .horizontal
-        new_stack.sizeToFit()
-        new_stack.translatesAutoresizingMaskIntoConstraints = false
-        stackViews.append(new_stack)
         
         let newStackView = UIStackView(arrangedSubviews: stackViews)
         newStackView.axis = .vertical
-        newStackView.spacing = 20
+        newStackView.spacing = 10
         newStackView.alignment = .center
         newStackView.sizeToFit()
         newStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(newStackView)
+        newStackView.backgroundColor = .blue
+        
+        NSLayoutConstraint.activate([
+            newStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            newStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            newStackView.topAnchor.constraint(equalTo: topAnchor),
+            newStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
     }
     
     @objc func playButtonAction(sender: UIButton) {
-        for control in controls where sender.tag == control.tag {
-            delegate?.bottomControlViewActionPerformed(action: control)
+        for control in controls + bottomControlArray.flatMap({ $0 }) where sender.tag == control.tag {
+            if sender.tag > 8 && sender.tag < 99 {
+                var title: String = ""
+                switch control {
+                case .custom(let string, _):
+                    title = string
+                default:
+                    break
+                }
+                if title == sender.titleLabel?.text {
+                    delegate?.bottomControlViewActionPerformed(action: control)
+                }
+            } else {
+                delegate?.bottomControlViewActionPerformed(action: control)
+            }
         }
     }
 }

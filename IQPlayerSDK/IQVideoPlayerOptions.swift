@@ -15,19 +15,19 @@ public enum IQPlayerSeek {
 
 public enum IQVideoGravity {
     
-    case resize
+    case fill
     
-    case resizeWithAspect
+    case aspectFit
     
-    case resizeWithAspectFit
+    case aspectFill
     
     internal var avGravity: AVLayerVideoGravity  {
         switch self {
-        case .resize:
+        case .fill:
             return .resize
-        case .resizeWithAspect:
+        case .aspectFit:
             return .resizeAspect
-        case .resizeWithAspectFit:
+        case .aspectFill:
             return .resizeAspectFill
         }
     }

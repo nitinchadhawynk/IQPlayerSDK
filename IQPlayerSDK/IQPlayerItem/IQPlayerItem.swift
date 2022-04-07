@@ -14,7 +14,6 @@ public struct IQPlayerItem {
     
     private  var headers: [String: Any]?
     
-    ////autoPlay used to start the video playback instantly after loading the asset
     public var autoPlay = true
     
     internal var output: IQPlaybackOutputManager?
@@ -37,34 +36,6 @@ public struct IQPlayerItem {
         av_playerItem = AVPlayerItem(asset: av_asset)
         
         self.assetLoader = IQAssetLoader(asset: av_asset)
-        observeBitrates()
-    }
-    
-    private func observeBitrates() {
-        let builder = ManifestBuilder().parse(playbackURL)
-        let playlist = builder.playlists
-        
-        for (index, object) in playlist.enumerated() {
-            if object.bandwidth > 0 {
-                //availableBandwidthList.append(Double(object.bandwidth))
-                
-                print("Play List  Information - Starts")
-                print("Playlist \(index + 1)")
-                print(object.bandwidth)
-                print(object.resolution ?? "No Resolution Value")
-                print("Play List  Information - End")
-            } else {
-                
-            }
-        }
-    }
-    
-    public func setPreferredPeakBitrate(bitrate: Double) {
-        self.av_playerItem.preferredPeakBitRate = bitrate
-    }
-    
-    public func setPreferredMaximumResolution(resolution: CGSize) {
-        self.av_playerItem.preferredMaximumResolution = resolution
     }
     
     public func setAssetLoaderDelegate(delegate: IQAssetLoaderDelegate) {
@@ -83,13 +54,4 @@ public struct IQPlayerItem {
             return position
         }
     }
-}
-
-//MARK: Observers functions on IQPlayerItem
-extension IQPlayerItem {
-    
-    func addObservers() {
-        
-    }
-    
 }

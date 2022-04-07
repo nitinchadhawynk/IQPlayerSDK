@@ -24,6 +24,9 @@ public class IQPlayerViewController: UIViewController {
     
     private var pictureInPictureController: AVPictureInPictureController?
     
+    private var audioList = [IQAudio]()
+    private var subtitleList = [IQSubtitle]()
+    
     public init(playerItem: IQPlayerItem) {
         self.item = playerItem
         super.init(nibName: nil, bundle: nil)
@@ -45,14 +48,25 @@ public class IQPlayerViewController: UIViewController {
     }
     
     func configurePlayerControls() {
-        bottomControls = IQBottomControls(frame: .zero)
+        
+        audioList.removeAll()
+        if let audios = item.getAvailableAudios() {
+            self.audioList.append(contentsOf: audios)
+        }
+        
+        subtitleList.removeAll()
+        if let subtitles = item.getAvailableSubtitles() {
+            self.subtitleList.append(contentsOf: subtitles)
+        }
+        
+        bottomControls = IQBottomControls(frame: .zero, customButtons: [ self.audioList.map({ .custom($0.displayName, 9) }), self.subtitleList.map({ .custom($0.displayName, 10) }), [.fill, .aspectFit, .aspectFill] ])
         bottomControls?.delegate = self
         bottomControls?.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(bottomControls!)
         NSLayoutConstraint.activate([
             bottomControls!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            bottomControls!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60),
-            bottomControls!.heightAnchor.constraint(equalToConstant: 100),
+            bottomControls!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
+            bottomControls!.heightAnchor.constraint(equalToConstant: 180),
             bottomControls!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
         view.bringSubviewToFront(bottomControls!)
@@ -68,9 +82,10 @@ public class IQPlayerViewController: UIViewController {
     
     func configureMultiSubtitle() {
         if let audios = item.getAvailableAudios(),
-           let firstAudio = audios.last {
+           let firstAudio = audios.first {
             //print("Audios \(audios)")
-            item.setAudio(with: firstAudio)
+            
+            item.select(audio: firstAudio)
         }
         print("Audios NIL")
     }
@@ -115,6 +130,27 @@ extension IQPlayerViewController: IQBottomControlDelegate {
             playerView?.moveForward()
         case .backward:
             playerView?.moveBackward()
+        case .custom(let displayName, let tag):
+            if tag == 9 {
+                if let selectedAudio = audioList.filter({ $0.displayName == displayName }).first {
+                    item.select(audio: selectedAudio)
+                }
+            }
+            if tag == 10 {
+                if let selectedSubtitle = subtitleList.filter({ $0.displayName == displayName }).first {
+                    item.select(subtitle: selectedSubtitle)
+                }
+            }
+            
+            
+        case .fill:
+            playerView?.select(gravity: .fill)
+            
+        case .aspectFit:
+            playerView?.select(gravity: .aspectFit)
+            
+        case .aspectFill:
+            playerView?.select(gravity: .aspectFill)
         }
     }
 }

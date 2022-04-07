@@ -9,8 +9,8 @@ import Foundation
 import AVFoundation
 
 public struct IQAudio {
-    let languageCode: String
-    let displayName: String
+    public let languageCode: String
+    public let displayName: String
 }
 
 public extension IQPlayerItem {
@@ -22,7 +22,7 @@ public extension IQPlayerItem {
         return nil
     }
     
-    func setAudio(with audio: IQAudio) {
+    func select(audio: IQAudio) {
         guard let group = fetchGroupNameForMultiAudio() else { return }
         for option in group.options where option.extendedLanguageTag?.lowercased() == audio.languageCode.lowercased() {
             av_playerItem.select(option, in: group)

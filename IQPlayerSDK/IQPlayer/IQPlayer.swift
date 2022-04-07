@@ -90,8 +90,8 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
         
     }
     
-    func setVideoGravity(gravity: IQVideoGravity) {
-        av_player.externalPlaybackVideoGravity = gravity.avGravity
+    public func select(gravity: IQVideoGravity) {
+        av_playerLayer.videoGravity = gravity.avGravity
     }
     
     deinit {
@@ -209,7 +209,6 @@ extension IQPlayer {
                     }
                 }
             }
-            
         }
         
         // Player Status

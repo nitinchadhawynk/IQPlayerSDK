@@ -13,6 +13,7 @@ public typealias IQPlayerProtocol = IQPlayerControlActionDelegate & IQPlayerView
 public class IQPlayerView: UIView {
     
     private var playerItem: IQPlayerItem
+    
     var player: IQPlayer
     
     private var output: IQPlaybackOutputManager!
@@ -75,6 +76,12 @@ extension IQPlayerView: IQVideoPlayerInterface {
         player.seek(to: time)
     }
     
+    public func seekToLive() {
+        if let range = playerItem.getSeekableTimeRanges(), let endRange = range.last {
+            seek(to: CMTimeGetSeconds(endRange.end))
+        }
+    }
+    
     public func reset() {
         player.reset()
     }
@@ -100,7 +107,11 @@ extension IQPlayerView: IQVideoPlayerInterface {
         player.seekBackwardAndPlay(play: true)
     }
     
-    public func setVideoGravity(gravity: IQVideoGravity) {
-        player.setVideoGravity(gravity: gravity)
-    }
+    
+}
+
+public extension IQPlayerView {
+    public func select(gravity: IQVideoGravity) {
+            player.select(gravity: gravity)
+        }
 }
