@@ -37,11 +37,11 @@ public class IQPlaybackOutputManager {
     }
     
     /**
-     * Take a listener as parameter and
-     * first class properties on the source are added to the properties dictionary.
+     * Take a listener as parameter and add that listener
+     * into collection of listeners
      *
-     * @param json Dictionary representing the deserialized source.
-     * @return The initialized source.
+     * @param listener consumer we want to inform in case of any
+     * event dispatch from player
      */
     public func append(listener: IQPlayerPlaybackConsumer) {
         listeners.append(listener)
@@ -128,6 +128,28 @@ public class IQPlaybackOutputManager {
         guard let view = playerView else { return }
         listeners.forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemUnknown)
+        }
+    }
+    
+    /**
+     * Indicates that the status of the player item is not yet known because it has not tried to load new media resources
+     * for playback.
+     */
+    func playbackStartedLoading() {
+        guard let view = playerView else { return }
+        listeners.forEach {
+            $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemloading)
+        }
+    }
+    
+    /**
+     * Indicates that the status of the player item is not yet known because it has not tried to load new media resources
+     * for playback.
+     */
+    func playbackStartedPlaying() {
+        guard let view = playerView else { return }
+        listeners.forEach {
+            $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemNotLoading)
         }
     }
 }

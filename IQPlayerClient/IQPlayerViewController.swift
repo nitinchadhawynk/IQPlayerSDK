@@ -42,7 +42,9 @@ public class IQPlayerViewController: UIViewController {
         playerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         playerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         playerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
+    }
+    
+    func configurePlayerControls() {
         bottomControls = IQBottomControls(frame: .zero)
         bottomControls?.delegate = self
         bottomControls?.translatesAutoresizingMaskIntoConstraints = false
@@ -50,21 +52,27 @@ public class IQPlayerViewController: UIViewController {
         NSLayoutConstraint.activate([
             bottomControls!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             bottomControls!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -60),
-            bottomControls!.heightAnchor.constraint(equalToConstant: 50),
+            bottomControls!.heightAnchor.constraint(equalToConstant: 100),
             bottomControls!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
         view.bringSubviewToFront(bottomControls!)
-        
-        
-        if let playerLayer = playerView.layer() as? AVPlayerLayer,
-            AVPictureInPictureController.isPictureInPictureSupported() {
+    }
+    
+    func configurePIP() {
+        if let playerLayer = playerView?.layer() as? AVPlayerLayer,
+           AVPictureInPictureController.isPictureInPictureSupported() {
             pictureInPictureController = AVPictureInPictureController(playerLayer: playerLayer)
             pictureInPictureController?.delegate = self
         }
     }
     
-    @objc private func pipButtonAction(sender: UIButton) {
-        startPip()
+    func configureMultiSubtitle() {
+        if let audios = item.getAvailableAudios(),
+           let firstAudio = audios.last {
+            //print("Audios \(audios)")
+            item.setAudio(with: firstAudio)
+        }
+        print("Audios NIL")
     }
     
     required init?(coder: NSCoder) {
@@ -74,6 +82,9 @@ public class IQPlayerViewController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         addPlayerView()
+        configurePlayerControls()
+        configurePIP()
+        configureMultiSubtitle()
         view.backgroundColor = .black
     }
     
@@ -86,11 +97,11 @@ extension IQPlayerViewController: IQBottomControlDelegate {
     func bottomControlViewActionPerformed(action: IQButtonControlAction) {
         switch action {
         case .play:
-            play()
+            playerView?.play()
         case .pause:
-            pause()
+            playerView?.pause()
         case .pip(_):
-            startPip()
+            pictureInPictureController?.startPictureInPicture()
         case .share:
             break
         case .mute(let bool):
@@ -109,22 +120,6 @@ extension IQPlayerViewController: IQBottomControlDelegate {
 }
 
 extension IQPlayerViewController {
-    
-    public func setMuted(enabled: Bool) {
-        playerView?.isMuted = enabled
-    }
-    
-    public func play() {
-        playerView?.play()
-    }
-    
-    public func pause() {
-        playerView?.pause()
-    }
-    
-    @objc public func startPip() {
-        pictureInPictureController?.startPictureInPicture()
-    }
     
     public func stop() {
         playerView?.removeFromSuperview()

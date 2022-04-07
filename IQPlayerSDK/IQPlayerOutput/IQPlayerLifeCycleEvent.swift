@@ -13,6 +13,19 @@ import Foundation
  */
 public enum IQPlayerLifeCycleEvent {
     
+    
+    /**
+     * @constant loading
+     * indicates that the player item is loading, client should implement loader on this
+     */
+    case playerItemloading
+    
+    /**
+     * @constant NotLoading
+     * indicates that the player item is not loading, client should hide loader on this
+     */
+    case playerItemNotLoading
+    
     /**
      * @constant     readyToPlay
      * Indicates that the player item is ready to be played.

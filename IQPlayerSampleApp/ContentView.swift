@@ -53,10 +53,10 @@ struct ContentView: View {
                 Spacer()
                 Text("currentTime \(currentTime ?? 0)")
                 Button("Play") {
-                    swiftUIPlayer.controls?.play()
+                    //swiftUIPlayer.controls?.play()
                 }
                 Button("Pause") {
-                    swiftUIPlayer.controls?.pause()
+                    //swiftUIPlayer.controls?.pause()
                 }
                 Button("Zoom in") {
                     //swiftUIPlayer.controls?.zoomIn()

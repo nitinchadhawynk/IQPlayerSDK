@@ -11,7 +11,6 @@ import AVFoundation
 
 class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
     
-    
     private let playerItem: IQPlayerItem
     var isStalling = false
     
@@ -19,12 +18,6 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
     @objc private let av_player: AVPlayer
     
     var output: IQPlaybackOutputManager?
-    
-    // Used to caclulate stall duration
-    fileprivate var stallBeginTime:Int64 = 0
-    
-    // Last observed bitrate
-    fileprivate var lastBitrate:Double = 0
     
     var currentTime: Double {
         return CMTimeGetSeconds(av_player.currentTime())
@@ -97,6 +90,9 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
         
     }
     
+    func setVideoGravity(gravity: IQVideoGravity) {
+        av_player.externalPlaybackVideoGravity = gravity.avGravity
+    }
     
     deinit {
         print("IQPlayer DEINIT")
@@ -116,46 +112,48 @@ extension IQPlayer {
                                   duration: CMTimeGetSeconds(duration))
         }
         
-        // [LOGGING] Add observer for player status
+        // Add observer for player status
         addObserver(self, forKeyPath: #keyPath(av_player.status), options: [.new, .initial], context: nil)
         
-        // [LOGGING] Add observer for playerItem status
+        // Add observer for playerItem status
         addObserver(self, forKeyPath: #keyPath(av_player.currentItem.status), options: [.new, .initial], context: nil)
         
-        // [LOGGING] Add observer for playerItem buffer
+        // Add observer for playerItem buffer
         addObserver(self, forKeyPath: #keyPath(av_player.currentItem.isPlaybackBufferEmpty), options: .new, context: nil)
         
-        // [LOGGING] Add observer for monitoring buffer full event
+        // Add observer for monitoring buffer full event
         addObserver(self, forKeyPath: #keyPath(av_player.currentItem.isPlaybackBufferFull), options: .new, context: nil)
         
-        // [LOGGING] Add observer for monitoring whether the item will likely play through without stalling
+        // Add observer for monitoring whether the item will likely play through without stalling
         addObserver(self, forKeyPath: #keyPath(av_player.currentItem.isPlaybackLikelyToKeepUp), options: .new, context: nil)
         
-        // [LOGGING] Provides a collection of time ranges for which the player has the media data readily available
+        // Provides a collection of time ranges for which the player has the media data readily available
         addObserver(self, forKeyPath: #keyPath(av_player.currentItem.loadedTimeRanges), options: .new, context: nil)
         
-        // [LOGGING] Indicates whether output is being obscured because of insufficient external protection
+        // Indicates whether output is being obscured because of insufficient external protection
         addObserver(self, forKeyPath: #keyPath(av_player.isOutputObscuredDueToInsufficientExternalProtection), options: .new, context: nil)
         
-        // [LOGGING] Console message arrived
+        addObserver(self, forKeyPath: #keyPath(av_player.timeControlStatus), options: [.new, .old], context: nil)
+        
+        // Console message arrived
         //NotificationCenter.default.addObserver(self, selector: #selector(handleConsoleMessageSent(_:)), name: NSNotification.Name.ConsoleMessageSent, object: nil)
         
-        // [LOGGING] Item has failed to play to its end time
+        // Item has failed to play to its end time
         NotificationCenter.default.addObserver(self, selector: #selector(itemFailedToPlayToEndTime), name: NSNotification.Name.AVPlayerItemFailedToPlayToEndTime, object: av_player.currentItem)
         
-        // [LOGGING] Item has played to its end time
+        // Item has played to its end time
         NotificationCenter.default.addObserver(self, selector: #selector(itemDidPlayToEndTime), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: av_player.currentItem)
         
-        // [LOGGING] Media did not arrive in time to continue playback
+        // Media did not arrive in time to continue playback
         NotificationCenter.default.addObserver(self, selector: #selector(itemPlaybackStalled), name: NSNotification.Name.AVPlayerItemPlaybackStalled, object: av_player.currentItem)
         
-        // [LOGGING] A new access log entry has been added
+        // A new access log entry has been added
         NotificationCenter.default.addObserver(self, selector: #selector(itemNewAccessLogEntry), name: NSNotification.Name.AVPlayerItemNewAccessLogEntry, object: av_player.currentItem)
         
-        // [LOGGING] A new error log entry has been added
+        // A new error log entry has been added
         NotificationCenter.default.addObserver(self, selector: #selector(itemNewErrorLogEntry), name: NSNotification.Name.AVPlayerItemNewErrorLogEntry, object: av_player.currentItem)
         
-        // [LOGGING] A media selection group changed its selected option
+        // A media selection group changed its selected option
         NotificationCenter.default.addObserver(self, selector: #selector(mediaSelectionDidChange), name: AVPlayerItem.mediaSelectionDidChangeNotification, object: av_player.currentItem)
     }
     
@@ -187,6 +185,31 @@ extension IQPlayer {
             @unknown default:
                 writeToConsole("UNEXPECTED STATUS","Playback")
             }
+        }
+        
+        if keyPath == #keyPath(av_player.timeControlStatus) {
+            var newStatus = AVPlayer.Status.unknown
+            var oldStatus = AVPlayer.Status.unknown
+            
+            // Get the status change from the change dictionary
+            if let statusNumber = change?[.newKey] as? NSNumber {
+                newStatus = AVPlayer.Status(rawValue: statusNumber.intValue) ?? .unknown
+            }
+            
+            if let statusNumber = change?[.oldKey] as? NSNumber {
+                oldStatus = AVPlayer.Status(rawValue: statusNumber.intValue) ?? .unknown
+            }
+            
+            if newStatus != oldStatus {
+                DispatchQueue.main.async { [weak self] in
+                    if self?.av_player.timeControlStatus == .playing || self?.av_player.timeControlStatus == .paused {
+                        self?.output?.playbackStartedPlaying()
+                    } else {
+                        self?.output?.playbackStartedLoading()
+                    }
+                }
+            }
+            
         }
         
         // Player Status
@@ -272,8 +295,8 @@ extension IQPlayer {
                 
                 if isStalling {
                     isStalling = false
-                    let stallDurationMs: Int64 = Date().toMillis()! - stallBeginTime
-                    writeToConsole("Stall took \(stallDurationMs) ms","Playback")
+                    //let stallDurationMs: Int64 = Date().toMillis()! - stallBeginTime
+                    //writeToConsole("Stall took \(stallDurationMs) ms","Playback")
                 }
                 
             } else {
@@ -310,7 +333,7 @@ extension IQPlayer {
     @objc func itemPlaybackStalled(_ notification: Notification) {
         isStalling = true
         // Used to calculate time delta of the stall which is printed to the Console
-        stallBeginTime = Date().toMillis()!
+        //stallBeginTime = Date().toMillis()!
         
         writeToConsole("Stall occured. Media did not arrive in time to continue playback",  "Playback")
     }
@@ -324,9 +347,9 @@ extension IQPlayer {
             return
         }
         
-        if lastEvent.indicatedBitrate != lastBitrate {
+        /*if lastEvent.indicatedBitrate != lastBitrate {
             writeToConsole("Bitrate changed to \(bytesToHumanReadable(bytes: lastEvent.indicatedBitrate))",  "Playback")
-        }
+        }*/
         
         writeToConsole("""
                 \n-------------- NEW PLAYER ACCESS LOG ENTRY -------------- \n \

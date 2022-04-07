@@ -6,10 +6,31 @@
 //
 
 import Foundation
+import AVFoundation
 
 public enum IQPlayerSeek {
     case position(TimeInterval)
     case durationRatio(Float)
+}
+
+public enum IQVideoGravity {
+    
+    case resize
+    
+    case resizeWithAspect
+    
+    case resizeWithAspectFit
+    
+    internal var avGravity: AVLayerVideoGravity  {
+        switch self {
+        case .resize:
+            return .resize
+        case .resizeWithAspect:
+            return .resizeAspect
+        case .resizeWithAspectFit:
+            return .resizeAspectFill
+        }
+    }
 }
 
 public protocol IQPlayerItemOptionsProtocol {

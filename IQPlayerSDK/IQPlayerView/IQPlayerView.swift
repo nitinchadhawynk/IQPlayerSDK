@@ -20,6 +20,7 @@ public class IQPlayerView: UIView {
     public init(frame: CGRect, playerItem: IQPlayerItem) {
         self.playerItem = playerItem
         self.player = IQPlayer(playerItem: playerItem)
+    
         super.init(frame: frame)
         output = IQPlaybackOutputManager(playerView: self)
         self.playerItem.output = output
@@ -99,17 +100,7 @@ extension IQPlayerView: IQVideoPlayerInterface {
         player.seekBackwardAndPlay(play: true)
     }
     
-    public func qualitySelected(with bitrate: Int) {
-        let playedTime = currentTime
-        //playerItem.qualitySelected(at: 10)
-        
-        /*
-        AVPlayerItem *currentItem = self.fairPlayVideoPlayback.player.currentItem;
-        NSTimeInterval currentTime = CMTimeGetSeconds(currentItem.currentTime);
-        NSLog(@"Bitrate Selected from player- %d",bitrate);
-        [currentItem setPreferredPeakBitRate:bitrate*1000];
-        [self.fairPlayVideoPlayback seekToTimeInterval:currentTime];
-        [self.fairPlayVideoPlayback play];
-         */
+    public func setVideoGravity(gravity: IQVideoGravity) {
+        player.setVideoGravity(gravity: gravity)
     }
 }
