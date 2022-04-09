@@ -102,6 +102,7 @@ class IQBottomControls: UIView {
         //addSubview(stack)
         stackViews.append(stack)
         
+        bottomControlArray.removeAll()
         for bottomControl in bottomControlArray {
             
             var newsubViews = [UIView]()
@@ -123,6 +124,15 @@ class IQBottomControls: UIView {
             stackViews.append(new_stack)
             
         }
+        
+        let progressBar = UISlider()
+        progressBar.maximumValue = 100
+        progressBar.minimumValue = 0
+        progressBar.thumbTintColor = .red
+        progressBar.tintColor = .green
+        progressBar.sizeToFit()
+        
+        stackViews.append(UIStackView(arrangedSubviews: [progressBar]))
         
         let newStackView = UIStackView(arrangedSubviews: stackViews)
         newStackView.axis = .vertical

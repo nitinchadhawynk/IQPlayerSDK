@@ -10,7 +10,7 @@ import Foundation
 /**
  * Conform to this protocol to receive basic playback information for each session.
  */
-public protocol IQPlayerPlaybackConsumer: AnyObject {
+public protocol IQPlayerPlaybackConsumer: class {
     
     /**
      * Called with the playerView's playback progress. As the player
@@ -35,4 +35,11 @@ public protocol IQPlayerPlaybackConsumer: AnyObject {
      */
     func playback(playerView: IQPlayerView, didReceivePlaybackLifeCycleEvent event: IQPlayerLifeCycleEvent)
     
+}
+
+extension IQPlayerPlaybackConsumer {
+    
+    public func playback(playerView: IQPlayerView, didProgressChangedTo progress: TimeInterval, withDuration duration: TimeInterval) { }
+    
+    func playback(playerView: IQPlayerView, didReceivePlaybackLifeCycleEvent event: IQPlayerLifeCycleEvent) { }
 }

@@ -51,9 +51,11 @@ class AcitivityIndicatorView {
     }
 }
 
-class Weak<T: AnyObject> {
-  weak var value : T?
-  init (value: T) {
-    self.value = value
-  }
+class IQWeakPlayerPlaybackConsumer {
+    
+    weak var value : IQPlayerPlaybackConsumer?
+    
+    init (_ value: IQPlayerPlaybackConsumer) {
+        self.value = value
+    }
 }

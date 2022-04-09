@@ -11,13 +11,13 @@ import UIKit
  * The IQPlaybackOutputManager class provides special handling of different consumer clients
  * and helps in dispatching any event to all the observers.
  */
-public class IQPlaybackOutputManager {
+internal class IQPlaybackOutputManager {
     
     /**
      * listeners is the array of all the clients who are observing the playback events.
      * if any event is dispatched by player, then all the listeneres will get notified.
      */
-    private var listeners = [IQPlayerPlaybackConsumer]()
+    private var listeners = [IQWeakPlayerPlaybackConsumer]()
     
     /**
      * playerView is used to pass as reference while dispatching
@@ -44,7 +44,7 @@ public class IQPlaybackOutputManager {
      * event dispatch from player
      */
     public func append(listener: IQPlayerPlaybackConsumer) {
-        listeners.append(listener)
+        listeners.append(IQWeakPlayerPlaybackConsumer(listener))
     }
     
     /**
@@ -57,7 +57,7 @@ public class IQPlaybackOutputManager {
      */
     func playback(didProgressChangedTo progress: TimeInterval, duration: TimeInterval) {
         guard let view = playerView else { return }
-        listeners.forEach {
+        listeners.compactMap({ $0.value }).forEach {
             $0.playback(playerView: view, didProgressChangedTo: progress, withDuration: duration)
         }
     }
@@ -68,7 +68,7 @@ public class IQPlaybackOutputManager {
      */
     func playbackPlayerReadyToPlay() {
         guard let view = playerView else { return }
-        listeners.forEach {
+        listeners.compactMap({ $0.value }).forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerReadyToPlay)
         }
     }
@@ -79,7 +79,7 @@ public class IQPlaybackOutputManager {
      */
     func playbackPlayerItemReadyToPlay() {
         guard let view = playerView else { return }
-        listeners.forEach {
+        listeners.compactMap({ $0.value }).forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemReadyToPlay)
         }
     }
@@ -93,7 +93,7 @@ public class IQPlaybackOutputManager {
      */
     func playback(playerItemFailedWithError error: Error?) {
         guard let view = playerView else { return }
-        listeners.forEach {
+        listeners.compactMap({ $0.value }).forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemFailed(error))
         }
     }
@@ -104,7 +104,7 @@ public class IQPlaybackOutputManager {
      */
     func playback(playerFailedWithError error: Error?) {
         guard let view = playerView else { return }
-        listeners.forEach {
+        listeners.compactMap({ $0.value }).forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerFailed(error))
         }
     }
@@ -115,7 +115,7 @@ public class IQPlaybackOutputManager {
      */
     func playbackPlayerStatusChangedToUnknown() {
         guard let view = playerView else { return }
-        listeners.forEach {
+        listeners.compactMap({ $0.value }).forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerUnknown)
         }
     }
@@ -126,7 +126,7 @@ public class IQPlaybackOutputManager {
      */
     func playbackPlayerItemStatusChangedToUnknown() {
         guard let view = playerView else { return }
-        listeners.forEach {
+        listeners.compactMap({ $0.value }).forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemUnknown)
         }
     }
@@ -137,8 +137,7 @@ public class IQPlaybackOutputManager {
      */
     func playbackStartedLoading() {
         guard let view = playerView else { return }
-        view.showActivityIndicator()
-        listeners.forEach {
+        listeners.compactMap({ $0.value }).forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemloading)
         }
     }
@@ -149,8 +148,7 @@ public class IQPlaybackOutputManager {
      */
     func playbackStartedPlaying() {
         guard let view = playerView else { return }
-        view.hideActivityIndicator()
-        listeners.forEach {
+        listeners.compactMap({ $0.value }).forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemNotLoading)
         }
     }
@@ -160,8 +158,18 @@ public class IQPlaybackOutputManager {
      */
     func playbackDidEnd() {
         guard let view = playerView else { return }
-        listeners.forEach {
+        listeners.compactMap({ $0.value }).forEach {
             $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playbackEnded)
+        }
+    }
+    
+    /**
+     * Indicates that  player item media doesn’t arrive in time to continue playback.
+     */
+    func playbackStalled() {
+        guard let view = playerView else { return }
+        listeners.compactMap({ $0.value }).forEach {
+            $0.playback(playerView: view, didReceivePlaybackLifeCycleEvent: .playerItemPlaybackStalled)
         }
     }
 }

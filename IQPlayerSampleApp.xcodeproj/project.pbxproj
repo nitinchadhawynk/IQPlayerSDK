@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		36019CFB27FEC87E00084F20 /* IQPlayerItem+MultiAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36019CFA27FEC87E00084F20 /* IQPlayerItem+MultiAudio.swift */; };
+		36171223280016150082562C /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36171222280016150082562C /* SampleViewController.swift */; };
 		361B792627FF7E4400856AAD /* IQPlayerItem+Bitrates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B792527FF7E4400856AAD /* IQPlayerItem+Bitrates.swift */; };
 		361B792827FF7F7400856AAD /* IQPlayerItem+Subtitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B792727FF7F7400856AAD /* IQPlayerItem+Subtitles.swift */; };
 		361B792A27FF8DF100856AAD /* IQPlayerItem+Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B792927FF8DF100856AAD /* IQPlayerItem+Live.swift */; };
@@ -143,6 +144,7 @@
 
 /* Begin PBXFileReference section */
 		36019CFA27FEC87E00084F20 /* IQPlayerItem+MultiAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IQPlayerItem+MultiAudio.swift"; sourceTree = "<group>"; };
+		36171222280016150082562C /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 		361B792527FF7E4400856AAD /* IQPlayerItem+Bitrates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IQPlayerItem+Bitrates.swift"; sourceTree = "<group>"; };
 		361B792727FF7F7400856AAD /* IQPlayerItem+Subtitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IQPlayerItem+Subtitles.swift"; sourceTree = "<group>"; };
 		361B792927FF8DF100856AAD /* IQPlayerItem+Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IQPlayerItem+Live.swift"; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				3689A0C427F905840099E9C8 /* Info.plist */,
 				3689A0BE27F905840099E9C8 /* Preview Content */,
 				3689A15827F90DB50099E9C8 /* SwiftUI_IQPlayerView.swift */,
+				36171222280016150082562C /* SampleViewController.swift */,
 			);
 			path = IQPlayerSampleApp;
 			sourceTree = "<group>";
@@ -707,6 +710,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36171223280016150082562C /* SampleViewController.swift in Sources */,
 				3689A0B727F905820099E9C8 /* AppDelegate.swift in Sources */,
 				3689A15927F90DB50099E9C8 /* SwiftUI_IQPlayerView.swift in Sources */,
 				3689A0B927F905820099E9C8 /* SceneDelegate.swift in Sources */,

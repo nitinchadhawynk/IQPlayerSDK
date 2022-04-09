@@ -23,12 +23,9 @@ public class IQPlayerView: UIView {
     public init(frame: CGRect, playerItem: IQPlayerItem) {
         self.playerItem = playerItem
         self.player = IQPlayer(playerItem: playerItem)
-    
         super.init(frame: frame)
         output = IQPlaybackOutputManager(playerView: self)
-        self.playerItem.output = output
-        self.player.output = output
-        addPlayerLayer()
+        configurePlayerView()
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +35,13 @@ public class IQPlayerView: UIView {
     public override func layoutSubviews() {
         super.layoutSubviews()
         player.layer.frame = bounds
+    }
+    
+    private func configurePlayerView() {
+        self.playerItem.output = output
+        self.player.output = output
+        addPlayerLayer()
+        addListenerIfDefaultPlaybackLoaderEnabled()
     }
     
     private func addPlayerLayer() {
@@ -109,24 +113,44 @@ extension IQPlayerView: IQVideoPlayerInterface {
         player.seekBackwardAndPlay(play: true)
     }
     
-    
-}
-
-public extension IQPlayerView {
-    func select(gravity: IQVideoGravity) {
+    public func select(gravity: IQVideoGravity) {
         player.select(gravity: gravity)
     }
+}
+
+extension IQPlayerView: IQPlayerPlaybackConsumer {
     
-    func showActivityIndicator() {
+    private func addListenerIfDefaultPlaybackLoaderEnabled() {
+        guard playerItem.options.isPlayerLoaderEnabled else { return }
+        output.append(listener: self)
+    }
+    
+    public func playback(playerView: IQPlayerView, didReceivePlaybackLifeCycleEvent event: IQPlayerLifeCycleEvent) {
+        
         guard playerItem.options.isPlayerLoaderEnabled else { return }
         
+        switch event {
+        case .playerItemNotLoading:
+            hideLoader()
+            
+        case .playerItemloading:
+            showLoader()
+            
+        default:
+            break
+        }
+    }
+    
+    
+    
+    func showLoader() {
         if loader == nil {
             self.loader = AcitivityIndicatorView(view: self)
         }
         loader?.show()
     }
     
-    func hideActivityIndicator() {
+    func hideLoader() {
         loader?.hide()
     }
 }
