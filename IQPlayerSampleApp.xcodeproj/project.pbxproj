@@ -12,8 +12,9 @@
 		361B792627FF7E4400856AAD /* IQPlayerItem+Bitrates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B792527FF7E4400856AAD /* IQPlayerItem+Bitrates.swift */; };
 		361B792827FF7F7400856AAD /* IQPlayerItem+Subtitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B792727FF7F7400856AAD /* IQPlayerItem+Subtitles.swift */; };
 		361B792A27FF8DF100856AAD /* IQPlayerItem+Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361B792927FF8DF100856AAD /* IQPlayerItem+Live.swift */; };
+		362AFA162801B03600E892BC /* IQPlayerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362AFA152801B03600E892BC /* IQPlayerViewDelegate.swift */; };
 		36656C9D27FCEA1A006715CF /* IQVideoPlayerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656C9C27FCEA1A006715CF /* IQVideoPlayerOptions.swift */; };
-		36656C9F27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656C9E27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift */; };
+		36656C9F27FCF08B006715CF /* IQPlayerItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656C9E27FCF08B006715CF /* IQPlayerItemDelegate.swift */; };
 		36656CA127FCF346006715CF /* IQPlayerLifeCycleEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CA027FCF346006715CF /* IQPlayerLifeCycleEvent.swift */; };
 		36656CA927FD87AC006715CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CA827FD87AC006715CF /* AppDelegate.swift */; };
 		36656CAB27FD87AC006715CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36656CAA27FD87AC006715CF /* ViewController.swift */; };
@@ -148,8 +149,9 @@
 		361B792527FF7E4400856AAD /* IQPlayerItem+Bitrates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IQPlayerItem+Bitrates.swift"; sourceTree = "<group>"; };
 		361B792727FF7F7400856AAD /* IQPlayerItem+Subtitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IQPlayerItem+Subtitles.swift"; sourceTree = "<group>"; };
 		361B792927FF8DF100856AAD /* IQPlayerItem+Live.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IQPlayerItem+Live.swift"; sourceTree = "<group>"; };
+		362AFA152801B03600E892BC /* IQPlayerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerViewDelegate.swift; sourceTree = "<group>"; };
 		36656C9C27FCEA1A006715CF /* IQVideoPlayerOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQVideoPlayerOptions.swift; sourceTree = "<group>"; };
-		36656C9E27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerPlaybackConsumer.swift; sourceTree = "<group>"; };
+		36656C9E27FCF08B006715CF /* IQPlayerItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerItemDelegate.swift; sourceTree = "<group>"; };
 		36656CA027FCF346006715CF /* IQPlayerLifeCycleEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IQPlayerLifeCycleEvent.swift; sourceTree = "<group>"; };
 		36656CA627FD87AC006715CF /* IQPlayerTVOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IQPlayerTVOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36656CA827FD87AC006715CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +256,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		362AFA192801C1B300E892BC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				36EE73BD27F99BF000401F1A /* Utility.swift */,
+				36656CCF27FD8C8C006715CF /* ManifestReader */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		36656CA727FD87AC006715CF /* IQPlayerTVOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,17 +350,15 @@
 		3689A0D127F905A10099E9C8 /* IQPlayerSDK */ = {
 			isa = PBXGroup;
 			children = (
-				36CB155527FCBBAC00A888BC /* IQPlayerOutput */,
-				3689A13327F906820099E9C8 /* IQPlayer */,
-				3689A12827F906180099E9C8 /* IQPlayableAction */,
 				3689A11D27F905DE0099E9C8 /* IQPlayerView */,
-				3689A19427F9188B0099E9C8 /* IQAssetLoader */,
-				36656C9C27FCEA1A006715CF /* IQVideoPlayerOptions.swift */,
 				3689A11627F905BA0099E9C8 /* IQPlayerItem */,
-				36656CCF27FD8C8C006715CF /* ManifestReader */,
+				3689A13327F906820099E9C8 /* IQPlayer */,
+				36CB155527FCBBAC00A888BC /* IQPlayerOutput */,
+				3689A12827F906180099E9C8 /* IQPlayableAction */,
+				3689A19427F9188B0099E9C8 /* IQAssetLoader */,
+				362AFA192801C1B300E892BC /* Helper */,
 				3689A0D227F905A10099E9C8 /* IQPlayerSDK.h */,
 				3689A0D327F905A10099E9C8 /* Info.plist */,
-				36EE73BD27F99BF000401F1A /* Utility.swift */,
 			);
 			path = IQPlayerSDK;
 			sourceTree = "<group>";
@@ -391,6 +400,7 @@
 				361B792527FF7E4400856AAD /* IQPlayerItem+Bitrates.swift */,
 				361B792727FF7F7400856AAD /* IQPlayerItem+Subtitles.swift */,
 				361B792927FF8DF100856AAD /* IQPlayerItem+Live.swift */,
+				36656C9C27FCEA1A006715CF /* IQVideoPlayerOptions.swift */,
 			);
 			path = IQPlayerItem;
 			sourceTree = "<group>";
@@ -446,7 +456,8 @@
 		36CB155527FCBBAC00A888BC /* IQPlayerOutput */ = {
 			isa = PBXGroup;
 			children = (
-				36656C9E27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift */,
+				362AFA152801B03600E892BC /* IQPlayerViewDelegate.swift */,
+				36656C9E27FCF08B006715CF /* IQPlayerItemDelegate.swift */,
 				36656CA027FCF346006715CF /* IQPlayerLifeCycleEvent.swift */,
 				36CB155627FCBBC700A888BC /* IQPlaybackOutputManager.swift */,
 				36CB155827FCBBF900A888BC /* IQPlayerPerformance.swift */,
@@ -729,7 +740,7 @@
 				3689A15327F90B1A0099E9C8 /* IQPlayerViewProtocol.swift in Sources */,
 				36019CFB27FEC87E00084F20 /* IQPlayerItem+MultiAudio.swift in Sources */,
 				36656CA127FCF346006715CF /* IQPlayerLifeCycleEvent.swift in Sources */,
-				36656C9F27FCF08B006715CF /* IQPlayerPlaybackConsumer.swift in Sources */,
+				36656C9F27FCF08B006715CF /* IQPlayerItemDelegate.swift in Sources */,
 				3689A11827F905C80099E9C8 /* IQPlayerItem.swift in Sources */,
 				36CB155927FCBBF900A888BC /* IQPlayerPerformance.swift in Sources */,
 				36656CE027FD8C9E006715CF /* BufferedReader.swift in Sources */,
@@ -749,6 +760,7 @@
 				36656CDC27FD8C9E006715CF /* FileBufferedReader.swift in Sources */,
 				36656CE127FD8C9E006715CF /* MasterPlaylist.swift in Sources */,
 				36656C9D27FCEA1A006715CF /* IQVideoPlayerOptions.swift in Sources */,
+				362AFA162801B03600E892BC /* IQPlayerViewDelegate.swift in Sources */,
 				36656CDB27FD8C9E006715CF /* MediaSegment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

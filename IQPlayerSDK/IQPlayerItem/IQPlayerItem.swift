@@ -8,7 +8,7 @@
 import Foundation
 import AVFoundation
 
-public struct IQPlayerItem {
+public class IQPlayerItem: NSObject {
     
     public var playbackURL: URL
     

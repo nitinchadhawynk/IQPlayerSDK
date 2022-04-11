@@ -8,37 +8,31 @@
 import Foundation
 import UIKit
 
-struct IQPlayerBitrate {
-    var bitrate: Int64
-    var resolution: CGSize
+public struct IQPlayerBitrateVariant {
+    var bitrate: Int
+    var resolution: String?
 }
 
 extension IQPlayerItem {
     
-    private func observeBitrates() {
+    public func observeBitrates() -> [IQPlayerBitrateVariant] {
         let builder = ManifestBuilder().parse(playbackURL)
         let playlist = builder.playlists
         
-        for (index, object) in playlist.enumerated() {
+        var availableVariants = [IQPlayerBitrateVariant]()
+        for object in playlist {
             if object.bandwidth > 0 {
-                //availableBandwidthList.append(Double(object.bandwidth))
-                
-                print("Play List  Information - Starts")
-                print("Playlist \(index + 1)")
-                print(object.bandwidth)
-                print(object.resolution ?? "No Resolution Value")
-                print("Play List  Information - End")
-            } else {
-                
+                availableVariants.append(IQPlayerBitrateVariant(bitrate: object.bandwidth, resolution: object.resolution))
             }
         }
+        return availableVariants
     }
     
-    public func setPreferredPeakBitrate(bitrate: Double) {
+    func setPreferredPeakBitrate(bitrate: Double) {
         self.av_playerItem.preferredPeakBitRate = bitrate
     }
     
-    public func setPreferredMaximumResolution(resolution: CGSize) {
+    func setPreferredMaximumResolution(resolution: CGSize) {
         self.av_playerItem.preferredMaximumResolution = resolution
     }
 }

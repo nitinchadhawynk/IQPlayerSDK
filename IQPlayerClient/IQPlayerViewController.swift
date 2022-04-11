@@ -100,6 +100,7 @@ public class IQPlayerViewController: UIViewController {
         configurePlayerControls()
         configurePIP()
         configureMultiSubtitle()
+        item.observeBitrates()
         view.backgroundColor = .black
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 import AVKit
 
-public typealias IQPlayerProtocol = IQPlayerControlActionDelegate & IQPlayerViewDelegate
+public typealias IQPlayerProtocol = IQPlayerControlActionDelegate & IQPlayerLayerDelegate
 
 public class IQPlayerView: UIView {
     

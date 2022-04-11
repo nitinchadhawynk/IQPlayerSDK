@@ -9,13 +9,13 @@ import Foundation
 import AVKit
 import AVFoundation
 
-class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
+class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerLayerDelegate {
     
-    private let playerItem: IQPlayerItem
-    var isStalling = false
+    let playerItem: IQPlayerItem
     
     private let av_playerLayer: AVPlayerLayer
-    @objc private let av_player: AVPlayer
+    
+    @objc let av_player: AVPlayer
     
     var output: IQPlaybackOutputManager?
     
@@ -23,7 +23,7 @@ class IQPlayer: NSObject, IQPlayerControlActionDelegate, IQPlayerViewDelegate {
         return CMTimeGetSeconds(av_player.currentTime())
     }
     
-    //MARK: IQPlayerViewDelegate
+    //MARK: IQPlayerLayerDelegate
     var layer: CALayer {
         return av_playerLayer
     }
@@ -308,12 +308,6 @@ extension IQPlayer {
             if currentItem.isPlaybackLikelyToKeepUp {
                 writeToConsole("Playback will likely to keep up","Playback")
                 
-                if isStalling {
-                    isStalling = false
-                    //let stallDurationMs: Int64 = Date().toMillis()! - stallBeginTime
-                    //writeToConsole("Stall took \(stallDurationMs) ms","Playback")
-                }
-                
             } else {
                 writeToConsole("Playback will likey to fail","Playback")
             }
@@ -343,10 +337,10 @@ extension IQPlayer {
     // Media did not arrive in time to continue playback
     // [LOGGING]
     @objc func itemPlaybackStalled(_ notification: Notification) {
-        isStalling = true
+        //isStalling = true
         // Used to calculate time delta of the stall which is printed to the Console
         //stallBeginTime = Date().toMillis()!
-        
+        output?.playbackStalled()
         writeToConsole("Stall occured. Media did not arrive in time to continue playback",  "Playback")
     }
     
